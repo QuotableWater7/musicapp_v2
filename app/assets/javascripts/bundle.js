@@ -44,7 +44,9 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	console.log('This is correctly showing up in console. Bleep');
+	(() => {
+	  console.log('Correctly loaded via es6.');
+	})();
 
 
 /***/ }
