@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	console.log('This is correctly showing up in console.');
+	console.log('This is correctly showing up in console. Bleep');
 
 
 /***/ }
