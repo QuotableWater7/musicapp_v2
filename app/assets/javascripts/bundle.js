@@ -29765,7 +29765,7 @@
 	      return _react2.default.createElement(
 	        'p',
 	        null,
-	        'Hello React!'
+	        'Hello React!!'
 	      );
 	    }
 	  }]);
