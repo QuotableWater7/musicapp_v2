@@ -6,4 +6,11 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = yield
+    .navbar.navbar-light.bg-faded
+      .row.toolbar-content
+        .col-md-12
+          .navbar-brand= link_to 'DocServe', root_path
+          %ul.nav.navbar-nav
+    .app-container
+      .app-body
+        = yield
