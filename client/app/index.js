@@ -4,8 +4,8 @@ import $ from 'jquery';
 import React from 'react';
 import {render} from 'react-dom';
 
-var Component = require('./component');
+var Layout = require('./layout');
 
 $(document).ready(() => {
-  render(<Component/>, document.getElementById('app'));
+  render(<Layout/>, document.getElementById('app'));
 });

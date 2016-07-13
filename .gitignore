@@ -21,3 +21,5 @@ dump*
 .byebug_history
 /.vagrant
 /app/assets/javascripts/*
+node_modules
+ass/asssets/javascripts/bundle.js
