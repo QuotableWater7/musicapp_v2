@@ -22,4 +22,4 @@ dump*
 /.vagrant
 /app/assets/javascripts/*
 node_modules
-/app/asssets/javascripts/bundle.js
+/app/assets/javascripts/bundle.js

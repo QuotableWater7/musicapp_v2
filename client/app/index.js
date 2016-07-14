@@ -9,6 +9,7 @@ import { Router, Route, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
 import Layout from './layout';
+import Setup from './setup';
 import reducers from './reducers/index';
 
 const store = createStore(
@@ -24,7 +25,7 @@ $(document).ready(() => {
     <Provider store={store}>
       <Router history={history}>
         <Route path='/' component={Layout}>
-
+          <Route path='/add' component={Setup}></Route>
         </Route>
       </Router>
     </Provider>,

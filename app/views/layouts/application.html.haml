@@ -6,11 +6,4 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    .navbar.navbar-light.bg-faded
-      .row.toolbar-content
-        .col-md-12
-          .navbar-brand= link_to 'Self Taught Music', root_path
-          %ul.nav.navbar-nav
-    .app-container
-      .app-body
-        = yield
+    #app
