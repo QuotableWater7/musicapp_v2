@@ -1,7 +1,7 @@
 'use strict';
 
 export default {
-  counterReducer (state, action) {
+  counter (state, action) {
     state = state || { count: 0 };
     switch(action.type) {
       case 'INCREMENT':

@@ -10,7 +10,7 @@ const Setup = ({ count, incrementCounter }) => (
 )
 
 const mapStateToProps = (state) => {
-  return state.counterReducer;
+  return state.counter;
 }
 
 const mapDispatchToProps = (dispatch) => {
