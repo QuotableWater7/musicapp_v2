@@ -17,7 +17,7 @@ const Layout = ({ children }) =>(
     <div className='container'>
       <div className='row'>
         <div className='col-lg-12'>
-          <p>This is the layout component!!!</p>
+          <h1>Music Practice Generator</h1>
           <Link to='/add'>Add</Link>
           {children}
         </div>
