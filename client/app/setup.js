@@ -1,13 +1,24 @@
 'use strict';
 
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default class Setup extends React.Component {
+const Setup = ({ count, incrementCounter }) => (
+  <div onClick={incrementCounter}>
+    Count: {count}
+  </div>
+)
 
-  render() {
-    return (
-      <div>Setup</div>
-    );
-  }
-
+const mapStateToProps = (state) => {
+  return state.counterReducer;
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    incrementCounter: () => { dispatch({ type: 'INCREMENT' }) }
+  };
+}
+
+const wrapper = connect(mapStateToProps, mapDispatchToProps)(Setup);
+
+export default wrapper;

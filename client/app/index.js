@@ -17,7 +17,7 @@ const store = createStore(
     ...reducers,
     routing: routerReducer
   })
-)
+);
 const history = syncHistoryWithStore(browserHistory, store);
 
 $(document).ready(() => {
