@@ -25,7 +25,7 @@ $(document).ready(() => {
     <Provider store={store}>
       <Router history={history}>
         <Route path='/' component={Layout}>
-          <Route path='/add' component={Setup}></Route>
+          <Route path='/setup' component={Setup}></Route>
         </Route>
       </Router>
     </Provider>,

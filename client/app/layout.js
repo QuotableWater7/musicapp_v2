@@ -4,23 +4,28 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const Layout = ({ children }) =>(
-  <div>
-    <div className='navbar navbar-light bg-faded'>
+  <div className='container'>
+    <br/>
+    <nav className='navbar navbar-light bg-faded'>
       <div className='row toolbar-content'>
         <div className='col-md-12'>
           <div className='navbar-brand'>
-            Brand link
+            <Link to='/'>Self Taught Music</Link>
           </div>
+          <ul className='nav navbar-nav'>
+            <li className='nav-item'>
+              <Link to='/setup' className='nav-link'>
+                Setup
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-    <div className='container'>
-      <div className='row'>
-        <div className='col-lg-12'>
-          <h1>Music Practice Generator</h1>
-          <Link to='/add'>Add</Link>
-          {children}
-        </div>
+    </nav>
+    <div className='row'>
+      <div className='col-lg-12'>
+        <h1>Music Practice Generator</h1>
+        {children}
       </div>
     </div>
   </div>
