@@ -11,7 +11,7 @@ const DrillRow = ({ title, id, removeDrill }) => {
         <td></td>
         <td></td>
         <td>
-          <div className='btn btn-danger' onClick={removeDrill(id)}>-</div>
+          <div className='btn btn-danger btn-sm' onClick={removeDrill(id)}>-</div>
         </td>
       </tr>
     </tbody>

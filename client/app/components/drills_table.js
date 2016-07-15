@@ -18,8 +18,8 @@ const DrillsTable = ({ drills, addDrill }) => {
       {drills.map((drill) => <DrillRow {...drill} key={drill.id}/>)}
       <tbody>
         <tr>
-          <td className='text-center' colSpan='2'>
-            <div className='btn btn-primary' onClick={addDrill}>+</div>
+          <td colSpan='4' className='text-xs-center'>
+            <div className='btn btn-primary btn-sm' onClick={addDrill}>+</div>
           </td>
         </tr>
       </tbody>
