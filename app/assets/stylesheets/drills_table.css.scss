@@ -32,4 +32,13 @@ $add-row-bg-color: #ecf2f9;
   .right-addon i {
     right: 0px;
   }
+
+  .remove-row {
+    cursor: pointer;
+    color: #888;
+
+    &:hover {
+      color: black;
+    }
+  }
 }
