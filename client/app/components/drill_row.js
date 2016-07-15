@@ -7,7 +7,7 @@ const DrillRow = ({ title, id, removeDrill }) => {
   return (
     <tbody>
       <tr>
-        <td>{title}</td>
+        <td><input className='form-control' value={title}/></td>
         <td></td>
         <td></td>
         <td>
