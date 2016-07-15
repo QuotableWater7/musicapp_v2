@@ -8,8 +8,8 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
-import Layout from './layout';
-import Setup from './setup';
+import Layout from './components/layout';
+import Setup from './components/setup';
 import reducers from './reducers/index';
 
 const store = createStore(

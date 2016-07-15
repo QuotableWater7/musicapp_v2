@@ -1,13 +1,7 @@
 'use strict';
 
-export default {
-  counter (state, action) {
-    state = state || { count: 0 };
-    switch(action.type) {
-      case 'INCREMENT':
-        return { count: state.count + 1 };
-    }
+import drills from './drills';
 
-    return state;
-  }
+export default {
+  drills
 }

@@ -2,20 +2,22 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import DrillsTable from './drills_table';
 
-const Setup = ({ count, incrementCounter }) => (
-  <div onClick={incrementCounter}>
-    Count: {count}
+const Setup = ({ drills }) => (
+  <div>
+    <h5>Drills</h5>
+    <DrillsTable drills={drills}/>
   </div>
 )
 
 const mapStateToProps = (state) => {
-  return state.counter;
-}
+  return state;
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    incrementCounter: () => { dispatch({ type: 'INCREMENT' }) }
+    removeDrill(id) {  },
   };
 }
 
