@@ -4,27 +4,36 @@ import React from 'react';
 import { connect } from 'react-redux';
 import DrillRow from './drill_row';
 
-const DrillsTable = ({ drills }) => {
+const DrillsTable = ({ drills, addDrill }) => {
   return (
     <table className='table'>
-      <thead>
+      <thead className='thead-inverse'>
         <tr>
-          <th>Col 1</th>
-          <th>Col 2</th>
+          <th>Drill Name</th>
+          <th>Importance</th>
+          <th>Duration</th>
+          <th></th>
         </tr>
       </thead>
-      {drills.map((drill) => <DrillRow {...drill} key={drill.title}/>)}
+      {drills.map((drill) => <DrillRow {...drill} key={drill.id}/>)}
+      <tbody>
+        <tr>
+          <td className='text-center' colSpan='2'>
+            <div className='btn btn-primary' onClick={addDrill}>+</div>
+          </td>
+        </tr>
+      </tbody>
     </table>
   );
 };
 
 const mapStateToProps = (state) => {
-  return state.drills;
+  return state;
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    addDrill() { dispatch({ type: 'ADD_DRILL' }); }
   };
 }
 

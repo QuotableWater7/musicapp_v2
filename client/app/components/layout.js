@@ -22,12 +22,8 @@ const Layout = ({ children }) =>(
         </div>
       </div>
     </nav>
-    <div className='row'>
-      <div className='col-lg-12'>
-        <h3>Setup</h3>
-        {children}
-      </div>
-    </div>
+    <br/><br/>
+    {children}
   </div>
 );
 

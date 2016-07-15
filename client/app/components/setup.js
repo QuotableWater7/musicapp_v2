@@ -5,9 +5,11 @@ import { connect } from 'react-redux';
 import DrillsTable from './drills_table';
 
 const Setup = ({ drills }) => (
-  <div>
-    <h5>Drills</h5>
-    <DrillsTable drills={drills}/>
+  <div className='row'>
+    <div className='col-md-8 col-md-offset-2'>
+      <h5>Drills</h5>
+      <DrillsTable drills={drills}/>
+    </div>
   </div>
 )
 
