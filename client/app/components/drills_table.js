@@ -15,7 +15,7 @@ const DrillsTable = ({ drills, addDrill, removeDrill }) => {
           <th></th>
         </tr>
       </thead>
-      {drills.map((drill) => <DrillRow {...drill} removeDrill={removeDrill(drill.id)}/>)}
+      {drills.map((drill) => <DrillRow {...drill} key={drill.id} removeDrill={removeDrill(drill.id)}/>)}
       <tbody>
         <tr className='add-drill-row'>
           <td colSpan='4' className='text-xs-center'>
