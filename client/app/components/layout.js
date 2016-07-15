@@ -3,6 +3,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import Welcome from './welcome';
+
 const Layout = ({ children }) =>(
   <div className='container'>
     <br/>
@@ -23,7 +25,7 @@ const Layout = ({ children }) =>(
       </div>
     </nav>
     <br/><br/>
-    {children}
+    {children || <Welcome/>}
   </div>
 );
 
