@@ -19,16 +19,4 @@ const PencilInput = ({ name, value, classes, update }) => {
   );
 }
 
-const mapStateToProps = (state) => {
-  return state;
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    update() {}
-  };
-};
-
-const wrapper = connect(mapStateToProps, mapDispatchToProps)(PencilInput);
-
-export default wrapper;
+export default PencilInput;

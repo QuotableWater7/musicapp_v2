@@ -11,6 +11,10 @@ export default (state, action) => {
     case 'REMOVE_DRILL':
     new_state = state.filter((drill) => { return drill.id !== action.id });
     return new_state;
+    case 'UPDATE_DRILL':
+    let found_index = state.findIndex((drill) => drill.id === action.id);
+    state[found_index] = Object.assign({}, state[found_index], action.data);
+    return state.slice();
   }
 
   return state;

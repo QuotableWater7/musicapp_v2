@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import DrillRow from './drill_row';
 
-const DrillsTable = ({ drills, addDrill, removeDrill }) => {
+const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill }) => {
   return (
     <table className='table table-hover drills-table'>
       <thead className='thead-inverse'>
@@ -15,7 +15,7 @@ const DrillsTable = ({ drills, addDrill, removeDrill }) => {
           <th></th>
         </tr>
       </thead>
-      {drills.map((drill) => <DrillRow {...drill} key={drill.id} removeDrill={removeDrill(drill.id)}/>)}
+      {drills.map((drill) => <DrillRow {...drill} key={drill.id} removeDrill={removeDrill(drill.id)} updateDrill={updateDrill(drill.id)}/>)}
       <tbody>
         <tr className='add-drill-row'>
           <td colSpan='4' className='text-xs-center'>
@@ -40,6 +40,16 @@ const mapDispatchToProps = (dispatch) => {
 
     removeDrill(id) {
       return () => { dispatch({ type: 'REMOVE_DRILL', id: id }) };
+    },
+
+    updateDrill(id) {
+      return (event) => {
+        dispatch({
+          type: 'UPDATE_DRILL',
+          id: id,
+          data: { title: event.target.value }
+        })
+      };
     }
   };
 }
