@@ -6,7 +6,7 @@ import DrillRow from './drill_row';
 
 const DrillsTable = ({ drills, addDrill }) => {
   return (
-    <table className='table'>
+    <table className='table table-hover drills-table'>
       <thead className='thead-inverse'>
         <tr>
           <th>Drill Name</th>
@@ -17,9 +17,9 @@ const DrillsTable = ({ drills, addDrill }) => {
       </thead>
       {drills.map((drill) => <DrillRow {...drill} key={drill.id}/>)}
       <tbody>
-        <tr>
+        <tr className='add-drill-row'>
           <td colSpan='4' className='text-xs-center'>
-            <div className='btn btn-primary btn-sm' onClick={addDrill}>+</div>
+            <a href='#' onClick={addDrill}>Add Drill</a>
           </td>
         </tr>
       </tbody>
@@ -33,7 +33,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addDrill() { dispatch({ type: 'ADD_DRILL' }); }
+    addDrill(event) {
+      event.preventDefault();
+      dispatch({ type: 'ADD_DRILL' });
+    }
   };
 }
 

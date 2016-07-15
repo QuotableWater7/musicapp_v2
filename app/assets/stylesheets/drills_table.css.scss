@@ -1,0 +1,18 @@
+$add-row-bg-color: #d9edf7;
+
+.drills-table {
+  .add-drill-row {
+    background: $add-row-bg-color;
+
+    &:hover {
+      background: $add-row-bg-color;
+    }
+
+    td {
+      padding: 5px;
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+      cursor: pointer;
+    }
+  }
+}
