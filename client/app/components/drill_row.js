@@ -5,11 +5,17 @@ import { connect } from 'react-redux';
 
 import PencilInput from './pencil_input';
 
-const DrillRow = ({ title, id, removeDrill, updateDrill }) => {
+const DrillRow = ({ drill, removeDrill, updateDrill }) => {
   return (
     <tbody>
       <tr>
-        <td><PencilInput value={title} id={id} update={updateDrill}/></td>
+        <td>
+          <PencilInput
+            value={drill.get('title')}
+            id={drill.get('id')}
+            update={updateDrill}
+          />
+        </td>
         <td></td>
         <td></td>
         <td>

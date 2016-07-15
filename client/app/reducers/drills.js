@@ -1,20 +1,28 @@
 'use strict';
 
-export default (state, action) => {
-  state = state || [{ title: 'Drill One', id: Math.random()}, { title: 'Drill Two', id: Math.random() }];
-  let new_state;
+import { Map, List } from 'immutable';
+
+let default_state = List([
+  Map({ title: 'Drill One', id: Math.random()}),
+  Map({ title: 'Drill Two', id: Math.random()})
+]);
+
+export default (state = default_state, action) => {
+  let new_state = state;
 
   switch(action.type) {
     case 'ADD_DRILL':
-    new_state = state.concat([{ title: '[edit]', id: Math.random() }]);
-    return new_state;
+    return state.push(Map({ title: '[edit]', id: Math.random() }));
     case 'REMOVE_DRILL':
-    new_state = state.filter((drill) => { return drill.id !== action.id });
-    return new_state;
+    return state.filter((drill) => { return drill.get('id') !== action.id });
     case 'UPDATE_DRILL':
-    let found_index = state.findIndex((drill) => drill.id === action.id);
-    state[found_index] = Object.assign({}, state[found_index], action.data);
-    return state.slice();
+    return state.update(
+      state.findIndex(function(item) {
+        return item.get('id') === action.id;
+      }), (item) => {
+        return item.merge(action.data);
+      }
+    );
   }
 
   return state;

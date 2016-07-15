@@ -11,5 +11,8 @@
     "postinstall": "cd client && npm install"
   },
   "author": "JT Bowler",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "redux-immutable": "^3.0.6"
+  }
 }

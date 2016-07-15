@@ -15,7 +15,7 @@ const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill }) => {
           <th></th>
         </tr>
       </thead>
-      {drills.map((drill) => <DrillRow {...drill} key={drill.id} removeDrill={removeDrill(drill.id)} updateDrill={updateDrill(drill.id)}/>)}
+      {drills.map((drill) => <DrillRow drill={drill} key={drill.get('id')} removeDrill={removeDrill(drill.get('id'))} updateDrill={updateDrill(drill.get('id'))}/>)}
       <tbody>
         <tr className='add-drill-row'>
           <td colSpan='4' className='text-xs-center'>
@@ -28,7 +28,7 @@ const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill }) => {
 };
 
 const mapStateToProps = (state) => {
-  return state;
+  return { drills: state.get('drills') };
 };
 
 const mapDispatchToProps = (dispatch) => {
