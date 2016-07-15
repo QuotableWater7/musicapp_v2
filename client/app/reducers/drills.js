@@ -1,7 +1,7 @@
 'use strict';
 
 export default (state, action) => {
-  state = state || [{ title: 'bleh', id: Math.random() }];
+  state = state || [{ title: 'Drill One', id: Math.random()}, { title: 'Drill Two', id: Math.random() }];
   let new_state;
 
   switch(action.type) {
