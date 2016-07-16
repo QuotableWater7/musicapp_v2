@@ -8,7 +8,7 @@ const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill }) => {
   return (
     <table className='table table-hover drills-table'>
       <thead className='thead-inverse'>
-        <tr className='text-xs-center'>
+        <tr>
           <th style={{ width: '30%' }}>Drill Name</th>
           <th style={{ width: '40%' }}>Weight</th>
           <th style={{ width: '20%' }}>Duration</th>

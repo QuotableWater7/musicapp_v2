@@ -1,6 +1,10 @@
 $add-row-bg-color: #ecf2f9;
 
 .drills-table {
+  th {
+    text-align: center;
+  }
+
   .add-drill-row {
     background: $add-row-bg-color;
 
