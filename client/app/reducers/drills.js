@@ -20,12 +20,10 @@ export default (state = default_state, action) => {
     case 'REMOVE_DRILL':
     return state.delete(action.id);
     case 'UPDATE_DRILL':
-    let drill = state.get(action.id);
     return state.merge({
-      [drill.get('id')]: drill.merge(action.data)
+      [action.id]: state.get(action.id).merge(action.data)
     });
-    default:
-      return state;
   }
 
+  return state;
 }
