@@ -44,10 +44,8 @@ const mapDispatchToProps = (dispatch) => {
 
     updateDrill(id) {
       return (event) => {
-        let data = {};
-        data[event.target.name] = event.target.value;
-
-        dispatch({ type: 'UPDATE_DRILL', id: id, data: data });
+        let data = { [event.target.name]: event.target.value };
+        dispatch({ type: 'UPDATE_DRILL', id, data });
       };
     }
   };
