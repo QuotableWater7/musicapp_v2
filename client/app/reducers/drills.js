@@ -8,8 +8,6 @@ let default_state = List([
 ]);
 
 export default (state = default_state, action) => {
-  let new_state = state;
-
   switch(action.type) {
     case 'ADD_DRILL':
     return state.push(Map({ title: '[edit]', weight: 50, id: Math.random() }));
@@ -23,7 +21,8 @@ export default (state = default_state, action) => {
         return item.merge(action.data);
       }
     );
+    default:
+      return state;
   }
 
-  return state;
 }
