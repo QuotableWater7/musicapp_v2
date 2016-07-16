@@ -24,11 +24,11 @@ const DrillRow = ({ drill, removeDrill, updateDrill }) => {
             min={1}
             max={100}
             step={1}
-            value={drill.get('weight')}
+            value={drill.get('weightssffsd')}
             onChange={updateDrill}
           />
         </td>
-        <td></td>
+        <td className='text-xs-center'>{drill.get('min')}</td>
         <td className='remove-row'>
           <i className='fa fa-remove' onClick={removeDrill}/>
         </td>

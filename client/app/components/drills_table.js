@@ -3,6 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DrillRow from './drill_row';
+import decorateDrills from '../selectors/drills';
 
 const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill }) => {
   return (
@@ -28,7 +29,7 @@ const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill }) => {
 };
 
 const mapStateToProps = (state) => {
-  return { drills: state.get('drills').entrySeq() };
+  return { drills: decorateDrills(state.get('drills')).entrySeq() };
 };
 
 const mapDispatchToProps = (dispatch) => {
