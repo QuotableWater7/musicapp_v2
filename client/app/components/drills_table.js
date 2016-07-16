@@ -9,10 +9,10 @@ const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill }) => {
     <table className='table table-hover drills-table'>
       <thead className='thead-inverse'>
         <tr className='text-xs-center'>
-          <th>Drill Name</th>
-          <th>Weight</th>
-          <th>Duration</th>
-          <th></th>
+          <th style={{ width: '30%' }}>Drill Name</th>
+          <th style={{ width: '40%' }}>Weight</th>
+          <th style={{ width: '20%' }}>Duration</th>
+          <th style={{ width: '20%' }}></th>
         </tr>
       </thead>
       {drills.map(([key, value]) => <DrillRow drill={value} key={key} removeDrill={removeDrill(key)} updateDrill={updateDrill(key)}/>)}
