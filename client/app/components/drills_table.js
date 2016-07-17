@@ -29,7 +29,7 @@ const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill }) => {
 };
 
 const mapStateToProps = (state) => {
-  return { drills: decorateDrills(state.get('drills')).entrySeq() };
+  return { drills: decorateDrills(state).entrySeq() };
 };
 
 const mapDispatchToProps = (dispatch) => {
