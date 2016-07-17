@@ -10,11 +10,13 @@ const Layout = ({ children }) =>(
       <div className='row toolbar-content'>
         <div className='col-md-12'>
           <div className='navbar-brand'>
-            <Link to='/'>Self Taught Music</Link>
+            <Link to='/' activeClassName='active'>
+              Self Taught Music
+            </Link>
           </div>
           <ul className='nav navbar-nav'>
             <li className='nav-item'>
-              <Link to='/setup' className='nav-link'>
+              <Link to='/setup' className='nav-link' activeClassName='active'>
                 Setup
               </Link>
             </li>
