@@ -15,12 +15,16 @@ import Practice from './components/practice';
 
 import reducers from './reducers/index';
 
+import timerUpdater from './util/timer_updater';
+
 const store = createStore(combineReducers(reducers));
 const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState (state) {
     return state.get('routing').toJS();
   }
 });
+
+store.subscribe(timerUpdater(store));
 
 render(
   <Provider store={store}>
