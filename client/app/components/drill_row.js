@@ -24,7 +24,7 @@ const DrillRow = ({ drill, removeDrill, updateDrill }) => {
             min={1}
             max={100}
             step={1}
-            value={drill.get('weightssffsd')}
+            value={drill.get('weight')}
             onChange={updateDrill}
           />
         </td>
