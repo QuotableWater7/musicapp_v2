@@ -20,6 +20,11 @@ const Layout = ({ children }) =>(
                 Setup
               </Link>
             </li>
+            <li className='nav-item'>
+              <Link to='/practice' className='nav-link' activeClassName='active'>
+                Practice
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

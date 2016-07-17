@@ -8,6 +8,11 @@ import DrillsTable from './drills_table';
 const Setup = () => (
   <div>
     <div className='row'>
+      <div className='col-md-8 col-md-offset-2'>
+        <h3 className='text-xs-center'>Setup</h3>
+      </div>
+    </div>
+    <div className='row margin-top-10'>
       <div className='col-md-12 text-xs-center'>
         Total time <TotalTimeSelector/>
       </div>

@@ -11,6 +11,7 @@ import { combineReducers } from 'redux-immutable';
 import Layout from './components/layout';
 import Welcome from './components/welcome';
 import Setup from './components/setup';
+import Practice from './components/practice';
 
 import reducers from './reducers/index';
 
@@ -27,6 +28,7 @@ render(
       <Route path='/' component={Layout}>
         <IndexRoute component={Welcome}></IndexRoute>
         <Route path='/setup' component={Setup}></Route>
+        <Route path='/practice' component={Practice}></Route>
       </Route>
     </Router>
   </Provider>,
