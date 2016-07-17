@@ -12,7 +12,7 @@ export default createSelector(
     let time_multiplier = total_time * 1.0 / total_weight;
 
     return drills.map((drill) => (
-      drill.set('min', Math.round(drill.get('weight') * time_multiplier))
+      drill.set('min', drill.get('weight') * time_multiplier)
     ));
   }
 );

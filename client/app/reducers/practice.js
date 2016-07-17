@@ -2,7 +2,10 @@
 
 import { Map } from 'immutable';
 
-const default_state = Map({ total_time: 90 });
+const default_state = Map({
+  total_time: 90,
+  current_drill_index: 0,
+});
 
 export default (state = default_state, action) => {
   switch (action.type) {

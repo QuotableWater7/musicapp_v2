@@ -1,13 +1,53 @@
 'use strict';
 
 import React from 'react';
+import { connect } from 'react-redux';
+import decorateDrills from '../selectors/drills';
 
-export default () => {
+const Practice = ({ drill, time_remaining, timer, playOrPause }) => {
   return (
-    <div className='row'>
-      <div className='col-md-8 col-md-offset-2'>
-        <h3 className='text-xs-center'>Practice</h3>
+    <div>
+      <div className='row'>
+        <div className='col-md-8 col-md-offset-2'>
+          <h3 className='text-xs-center'>Practice</h3>
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col-md-8 col-md-offset-2'>
+          <h4>{drill.get('title')}</h4>
+          <p>{time_remaining}</p>
+          <div className='btn btn primary btn-sm' onClick={playOrPause(timer.get('isOn'))}>
+            {timer.get('isOn') ? 'Pause' : 'Play'}
+          </div>
+        </div>
       </div>
     </div>
   );
 };
+
+const mapStateToProps = (state) => {
+  let drills = decorateDrills(state).entrySeq();
+  let drill_index = state.getIn(['practice', 'current_drill_index']);
+  let current_drill = drills.get(drill_index)[1];
+
+  return {
+    drill: current_drill,
+    timer: state.get('timer'),
+    time_remaining: state.getIn(['timer', 'time_elapsed']) // need to fix
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    playOrPause: (isOn) => {
+      return () => {
+        let action = isOn ? 'STOP_TIMER' : 'START_TIMER';
+        dispatch({ type: action });
+      };
+    }
+  };
+};
+
+const wrapper = connect(mapStateToProps, mapDispatchToProps)(Practice);
+
+export default wrapper;
