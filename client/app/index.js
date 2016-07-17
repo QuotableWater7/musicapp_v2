@@ -1,6 +1,5 @@
 'use strict';
 
-import $ from 'jquery';
 import React from 'react';
 import {render} from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
@@ -22,16 +21,14 @@ const history = syncHistoryWithStore(browserHistory, store, {
   }
 });
 
-$(document).ready(() => {
-  render(
-    <Provider store={store}>
-      <Router history={history}>
-        <Route path='/' component={Layout}>
-          <IndexRoute component={Welcome}></IndexRoute>
-          <Route path='/setup' component={Setup}></Route>
-        </Route>
-      </Router>
-    </Provider>,
-    document.getElementById('app')
-  );
-});
+render(
+  <Provider store={store}>
+    <Router history={history}>
+      <Route path='/' component={Layout}>
+        <IndexRoute component={Welcome}></IndexRoute>
+        <Route path='/setup' component={Setup}></Route>
+      </Route>
+    </Router>
+  </Provider>,
+  document.getElementById('app')
+);
