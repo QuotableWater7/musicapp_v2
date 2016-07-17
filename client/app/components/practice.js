@@ -16,7 +16,7 @@ const Practice = ({ drill, time_elapsed, time_remaining, timer, playOrPause }) =
         <div className='col-md-8 col-md-offset-2'>
           <h4>{drill.get('title')}</h4>
           <p>{time_remaining}</p>
-          <div className='btn btn primary btn-sm' onClick={playOrPause(timer.get('isOn'))}>
+          <div className='btn btn-primary btn-sm' onClick={playOrPause(timer.get('isOn'))}>
             {timer.get('isOn') ? 'Pause' : 'Play'}
           </div>
         </div>
@@ -44,12 +44,9 @@ const mapDispatchToProps = (dispatch) => {
     playOrPause(isOn) {
       return () => {
         let action = isOn ? 'STOP_TIMER' : 'START_TIMER';
+        console.log(action)
         dispatch({ type: action });
       };
-    },
-
-    beginPractice() {
-
     }
   };
 };

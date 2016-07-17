@@ -31,6 +31,7 @@ const startTicking = (store) => {
 
 const stopTicking = () => {
   clearInterval(timer_ref);
+  timer_ref = null;
 };
 
 // drill complete when time_elapsed <= time for drill
