@@ -1,5 +1,5 @@
 {
-  "name": "doc_serve",
+  "name": "Self Taught Music",
   "version": "1.0.0",
   "description": "== README",
   "main": "index.js",
@@ -12,7 +12,4 @@
   },
   "author": "JT Bowler",
   "license": "ISC",
-  "dependencies": {
-    "redux-immutable": "^3.0.6"
-  }
 }
