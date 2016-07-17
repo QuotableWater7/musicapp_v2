@@ -11,6 +11,8 @@ export default (state = default_state, action) => {
   switch (action.type) {
   case 'UPDATE_TOTAL_TIME':
     return state.merge({ total_time: action.total_time });
+  case 'TIMER_COMPLETED':
+    return state.merge({ current_drill_index : state.get('current_drill_index') + 1 });
   }
 
   return state;
