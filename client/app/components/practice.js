@@ -35,7 +35,7 @@ const mapStateToProps = (state) => {
     drill: current_drill,
     timer: state.get('timer'),
     time_elapsed: time_elapsed,
-    time_remaining: current_drill.get('min') * 60 - time_elapsed
+    time_remaining: Math.round(current_drill.get('min') * 60) - time_elapsed
   };
 };
 
@@ -44,7 +44,6 @@ const mapDispatchToProps = (dispatch) => {
     playOrPause(isOn) {
       return () => {
         let action = isOn ? 'STOP_TIMER' : 'START_TIMER';
-        console.log(action)
         dispatch({ type: action });
       };
     }

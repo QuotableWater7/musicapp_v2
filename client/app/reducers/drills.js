@@ -3,13 +3,15 @@
 import { Map, List, fromJS } from 'immutable';
 
 const default_weight = 50;
+let current_id = 0;
 
 const default_state = fromJS({
-  [1]: { title: 'Drill One', weight: default_weight, id: 1 },
-  [2]: { title: 'Drill Two', weight: default_weight, id: 2 }
+  [current_id]: { title: 'Drill One', weight: default_weight, id: current_id++ },
+  [current_id]: { title: 'Drill Two', weight: default_weight, id: current_id++ },
+  [current_id]: { title: 'Drill Three', weight: default_weight, id: current_id++ },
+  [current_id]: { title: 'Drill Four', weight: default_weight, id: current_id++ },
+  [current_id]: { title: 'Drill Five', weight: default_weight, id: current_id++ }
 });
-
-let current_id = 3;
 
 export default (state = default_state, action) => {
   switch(action.type) {
