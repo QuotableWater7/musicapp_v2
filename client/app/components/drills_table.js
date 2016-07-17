@@ -5,13 +5,19 @@ import { connect } from 'react-redux';
 import DrillRow from './drill_row';
 import decorateDrills from '../selectors/drills';
 
-const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill }) => {
+const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill, resetDrillWeights }) => {
   return (
     <table className='table table-hover drills-table'>
       <thead className='thead-inverse'>
         <tr>
           <th style={{ width: '30%' }}>Drill Name</th>
-          <th style={{ width: '40%' }}>Weight</th>
+          <th style={{ width: '40%' }}>
+            Weight
+            &nbsp;
+            <a href='#' onClick={resetDrillWeights} style={{ 'font-weight': 'normal' }}>
+              (reset all)
+            </a>
+          </th>
           <th style={{ width: '20%' }}>Min</th>
           <th style={{ width: '20%' }}></th>
         </tr>
@@ -48,6 +54,10 @@ const mapDispatchToProps = (dispatch) => {
         let data = { [event.target.name]: event.target.value };
         dispatch({ type: 'UPDATE_DRILL', id, data });
       };
+    },
+
+    resetDrillWeights() {
+      dispatch({ type: 'RESET_DRILL_WEIGHTS' });
     }
   };
 }
