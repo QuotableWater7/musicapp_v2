@@ -12,7 +12,7 @@ const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill }) => {
         <tr>
           <th style={{ width: '30%' }}>Drill Name</th>
           <th style={{ width: '40%' }}>Weight</th>
-          <th style={{ width: '20%' }}>Duration</th>
+          <th style={{ width: '20%' }}>Min</th>
           <th style={{ width: '20%' }}></th>
         </tr>
       </thead>
