@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import decorateDrills from '../selectors/drills';
 
-const Practice = ({ drill, time_remaining, timer, playOrPause }) => {
+const Practice = ({ drill, time_elapsed, time_remaining, timer, playOrPause }) => {
   return (
     <div>
       <div className='row'>
@@ -29,21 +29,27 @@ const mapStateToProps = (state) => {
   let drills = decorateDrills(state).entrySeq();
   let drill_index = state.getIn(['practice', 'current_drill_index']);
   let current_drill = drills.get(drill_index)[1];
+  let time_elapsed = state.getIn(['timer', 'time_elapsed']);
 
   return {
     drill: current_drill,
     timer: state.get('timer'),
-    time_remaining: state.getIn(['timer', 'time_elapsed']) // need to fix
+    time_elapsed: time_elapsed,
+    time_remaining: current_drill.get('min') * 60 - time_elapsed
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    playOrPause: (isOn) => {
+    playOrPause(isOn) {
       return () => {
         let action = isOn ? 'STOP_TIMER' : 'START_TIMER';
         dispatch({ type: action });
       };
+    },
+
+    beginPractice() {
+
     }
   };
 };

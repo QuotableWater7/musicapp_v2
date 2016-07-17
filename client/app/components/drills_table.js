@@ -14,7 +14,7 @@ const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill, resetDrillWei
           <th style={{ width: '40%' }}>
             Weight
             &nbsp;
-            <a href='#' onClick={resetDrillWeights} style={{ 'font-weight': 'normal' }}>
+            <a href='#' onClick={resetDrillWeights} style={{ 'fontWeight': 'normal' }}>
               (reset all)
             </a>
           </th>
