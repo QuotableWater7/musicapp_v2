@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 const Layout = ({ children }) =>(
   <div className='container'>
     <br/>
-    <nav className='navbar navbar-light bg-faded'>
+    <nav className='navbar navbar-light' style={{ background: '#e3f2fd' }}>
       <div className='row toolbar-content'>
         <div className='col-md-12'>
           <div className='navbar-brand'>
