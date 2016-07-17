@@ -25,7 +25,7 @@ const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill, resetDrillWei
       {drills.map(([key, value]) => <DrillRow drill={value} key={key} removeDrill={removeDrill(key)} updateDrill={updateDrill(key)}/>)}
       <tbody>
         <tr className='add-drill-row'>
-          <td colSpan='4' className='text-xs-center'>
+          <td colSpan='4' className='text-xs-center no-select'>
             <a href='#' onClick={addDrill}>Add Drill</a>
           </td>
         </tr>
