@@ -14,10 +14,7 @@ export default (state = default_state, action) => {
   case 'STOP_TIMER':
     return state.merge({ isOn: false });
   case 'RESET_TIMER':
-    return state.merge({
-      ...default_state,
-      total_time: action.total_time,
-    });
+    return state.merge(default_state);
   case 'TICK':
     return state.merge({
       time_elapsed: state.get('time_elapsed') + action.amount

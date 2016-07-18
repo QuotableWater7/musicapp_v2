@@ -16,8 +16,7 @@ export default (store) => {
     } else if (isOn && isDrillComplete(state)) {
       stopTicking();
 
-      console.log('complete');
-      // setToNextActivity(state, store.dispatch);
+      setToNextActivity(state, store.dispatch);
     }
   }
 };
@@ -34,7 +33,6 @@ const stopTicking = () => {
   timer_ref = null;
 };
 
-// drill complete when time_elapsed <= time for drill
 const isDrillComplete = (state) => {
   let time_elapsed = state.getIn(['timer', 'time_elapsed']);
   let current_drill = getCurrentDrill(state);
@@ -52,5 +50,12 @@ const getCurrentDrill = (state) => {
 };
 
 const setToNextActivity = (state, dispatch) => {
+  let number_of_drills = state.get('drills').size;
+  let next_drill_index = state.getIn(['practice', 'current_drill_index']) + 1;
 
+  if (next_drill_index < number_of_drills) {
+    dispatch({ type: 'RESET_TIMER', current_drill_index: next_drill_index });
+  } else {
+    dispatch({ type: 'PRACTICE_COMPLETE' });
+  }
 };
