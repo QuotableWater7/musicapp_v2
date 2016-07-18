@@ -20,23 +20,6 @@ $add-row-bg-color: #ecf2f9;
     }
   }
 
-  .inner-addon {
-    position: relative;
-    i {
-      color: #888;
-    }
-  }
-
-  .inner-addon i {
-    position: absolute;
-    padding: 10px;
-    pointer-events: none;
-  }
-
-  .right-addon i {
-    right: 0px;
-  }
-
   .remove-row {
     cursor: pointer;
     color: #888;
