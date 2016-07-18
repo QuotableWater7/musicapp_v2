@@ -2,7 +2,11 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
+
 import decorateDrills from '../selectors/drills';
+
+const seconds_in_hour = 60 * 60;
 
 const Practice = ({ drill, time_elapsed, time_remaining, timer, playOrPause }) => {
   return (
@@ -15,7 +19,7 @@ const Practice = ({ drill, time_elapsed, time_remaining, timer, playOrPause }) =
       <div className='row'>
         <div className='col-md-8 col-md-offset-2'>
           <h4>{drill.get('title')}</h4>
-          <p>{time_remaining}</p>
+          <p>{formattedTime(time_remaining)}</p>
           <div className='btn btn-primary btn-sm' onClick={playOrPause(timer.get('isOn'))}>
             {timer.get('isOn') ? 'Pause' : 'Play'}
           </div>
@@ -24,6 +28,16 @@ const Practice = ({ drill, time_elapsed, time_remaining, timer, playOrPause }) =
     </div>
   );
 };
+
+function formattedTime(seconds) {
+  let duration = moment.duration(seconds, 'seconds');
+
+  if (seconds > seconds_in_hour) {
+    return moment.utc(duration.asMilliseconds()).format('H:mm:ss');
+  } else {
+    return moment.utc(duration.asMilliseconds()).format('mm:ss');
+  }
+}
 
 const mapStateToProps = (state) => {
   let drills = decorateDrills(state).entrySeq();
