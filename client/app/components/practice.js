@@ -8,21 +8,25 @@ import decorateDrills from '../selectors/drills';
 
 const seconds_in_hour = 60 * 60;
 
-const Practice = ({ drill, time_elapsed, time_remaining, timer, playOrPause }) => {
+const Practice = ({ drill, time_elapsed, time_remaining, timer, startOrStopTimer }) => {
   return (
     <div>
       <div className='row'>
         <div className='col-md-8 col-md-offset-2'>
-          <h3 className='text-xs-center'>Practice</h3>
+          <h3 className='text-xs-center'>{drill.get('title')}</h3>
         </div>
       </div>
       <div className='row'>
         <div className='col-md-8 col-md-offset-2'>
-          <h4>{drill.get('title')}</h4>
-          <p>{formattedTime(time_remaining)}</p>
-          <div className='btn btn-primary btn-sm' onClick={playOrPause(timer.get('isOn'))}>
-            {timer.get('isOn') ? 'Pause' : 'Play'}
+          <div className='timer-countdown'>
+            <p className='countdown-text'>{formattedTime(time_remaining)}</p>
+            <img src='/assets/clock.jpg'/>
           </div>
+        </div>
+      </div>
+      <div className='row text-xs-center margin-top-10'>
+        <div className='btn btn-primary btn-sm' onClick={startOrStopTimer(timer.get('isOn'))}>
+          {timer.get('isOn') ? 'Pause' : 'Practice!'}
         </div>
       </div>
     </div>
@@ -55,7 +59,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    playOrPause(isOn) {
+    startOrStopTimer(isOn) {
       return () => {
         let action = isOn ? 'STOP_TIMER' : 'START_TIMER';
         dispatch({ type: action });

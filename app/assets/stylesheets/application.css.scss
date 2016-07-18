@@ -20,3 +20,29 @@
   -ms-user-select: none;       /* Internet Explorer/Edge */
   user-select: none;           /* Non-prefixed version, currently not supported by any browser */
 }
+
+.timer-countdown {
+  margin: 0 auto;
+  position: relative;
+  width: 100px;
+  height: 100px;
+
+  .countdown-text {
+    position: relative;
+    text-align: center;
+    top: 35px;
+    z-index: 2;
+  }
+
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: .6;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+  }
+}
