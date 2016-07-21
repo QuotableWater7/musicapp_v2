@@ -16,6 +16,7 @@ import Practice from './components/practice';
 import reducers from './reducers/index';
 
 import timerUpdater from './util/timer_updater';
+import practiceLoader from './util/practice_loader';
 
 const store = createStore(combineReducers(reducers));
 const history = syncHistoryWithStore(hashHistory, store, {

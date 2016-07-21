@@ -5,15 +5,7 @@ import { Map, List, fromJS } from 'immutable';
 const default_weight = 50;
 let current_id = 0;
 
-const default_state = fromJS({
-  [current_id]: { title: 'Drill One', weight: default_weight, id: current_id++ },
-  [current_id]: { title: 'Drill Two', weight: default_weight, id: current_id++ },
-  [current_id]: { title: 'Drill Three', weight: default_weight, id: current_id++ },
-  [current_id]: { title: 'Drill Four', weight: default_weight, id: current_id++ },
-  [current_id]: { title: 'Drill Five', weight: default_weight, id: current_id++ }
-});
-
-export default (state = default_state, action) => {
+export default (state = Map(), action) => {
   switch(action.type) {
   case 'ADD_DRILL':
     state = state.merge({
