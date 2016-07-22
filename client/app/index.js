@@ -17,7 +17,7 @@ import Practice from './components/practice';
 import reducers from './reducers/index';
 
 import timerUpdater from './util/timer_updater';
-// import practiceLoader from './util/practice_loader';
+import { fetchPractice } from './actions/practice';
 
 const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
 const history = syncHistoryWithStore(hashHistory, store, {
@@ -27,6 +27,7 @@ const history = syncHistoryWithStore(hashHistory, store, {
 });
 
 store.subscribe(timerUpdater(store));
+store.dispatch(fetchPractice());
 
 render(
   <Provider store={store}>

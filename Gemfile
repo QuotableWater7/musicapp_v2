@@ -13,5 +13,6 @@ gem 'turbolinks'
 gem 'sass-rails'
 
 group :development do
+  gem 'byebug'
   gem 'spring'
 end

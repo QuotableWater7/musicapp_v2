@@ -5,13 +5,13 @@ class PracticesController < ApplicationController
       format.json do
         current_id = 1
         data = {
-          current_id => { title: 'Drill One', weight: default_weight, id: current_id },
-          (current_id += 1) => { title: 'Drill Two', weight: default_weight, id: current_id },
-          (current_id += 1) => { title: 'Drill Three', weight: default_weight, id: current_id },
-          (current_id += 1) => { title: 'Drill Four', weight: default_weight, id: current_id },
-          (current_id += 1) => { title: 'Drill Five', weight: default_weight, id: current_id }
+          current_id => { title: 'Drill One', weight: 50, id: current_id },
+          (current_id += 1) => { title: 'Drill Two', weight: 50, id: current_id },
+          (current_id += 1) => { title: 'Drill Three', weight: 50, id: current_id },
+          (current_id += 1) => { title: 'Drill Four', weight: 50, id: current_id },
+          (current_id += 1) => { title: 'Drill Five', weight: 50, id: current_id }
         }
-        render json: data
+        render status: :ok, json: { drills: data }
       end
     end
   end
