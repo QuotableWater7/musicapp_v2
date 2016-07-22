@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { combineReducers } from 'redux-immutable';
+import thunk from 'redux-thunk';
 
 import Layout from './components/layout';
 import Welcome from './components/welcome';
@@ -18,7 +19,7 @@ import reducers from './reducers/index';
 import timerUpdater from './util/timer_updater';
 // import practiceLoader from './util/practice_loader';
 
-const store = createStore(combineReducers(reducers));
+const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
 const history = syncHistoryWithStore(hashHistory, store, {
   selectLocationState (state) {
     return state.get('routing').toJS();
