@@ -9,10 +9,10 @@ export default createSelector(
   [getDrills, getTotalTime],
   (drills, total_time) => {
     let total_weight = drills.reduce((memo, drill) => Number(drill.get('weight')) + memo, 0);
-    let time_multiplier = total_time * 1.0 / total_weight;
+    let time_multiplier = total_time * 60.0 / total_weight;
 
     return drills.map((drill) => (
-      drill.set('min', drill.get('weight') * time_multiplier)
+      drill.set('sec', Math.round(drill.get('weight') * time_multiplier))
     ));
   }
 );

@@ -56,7 +56,8 @@ const mapDispatchToProps = (dispatch) => {
       };
     },
 
-    resetDrillWeights() {
+    resetDrillWeights(event) {
+      event.preventDefault();
       dispatch({ type: 'RESET_DRILL_WEIGHTS' });
     }
   };

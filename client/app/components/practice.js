@@ -8,7 +8,9 @@ import decorateDrills from '../selectors/drills';
 
 const seconds_in_hour = 60 * 60;
 
-const Practice = ({ drill, time_elapsed, time_remaining, timer, startOrStopTimer }) => {
+const Practice = ({ drill, time_elapsed, timer, startOrStopTimer }) => {
+  if (!drill) { return addDrillsMessage(); }
+
   return (
     <div>
       <div className='row'>
@@ -19,7 +21,7 @@ const Practice = ({ drill, time_elapsed, time_remaining, timer, startOrStopTimer
       <div className='row'>
         <div className='col-md-8 col-md-offset-2'>
           <div className='timer-countdown'>
-            <p className='countdown-text'>{formattedTime(time_remaining)}</p>
+            <p className='countdown-text'>{formattedTime(drill.get('sec') - time_elapsed)}</p>
             <img src='/assets/clock.jpg'/>
           </div>
         </div>
@@ -32,6 +34,18 @@ const Practice = ({ drill, time_elapsed, time_remaining, timer, startOrStopTimer
     </div>
   );
 };
+
+function addDrillsMessage() {
+  return (
+    <div className='row'>
+      <div className='col-md-8 col-md-offset-2'>
+        <div className='alert alert-danger'>
+          It appears you have not added anything to practice!
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function formattedTime(seconds) {
   let duration = moment.duration(seconds, 'seconds');
@@ -46,14 +60,13 @@ function formattedTime(seconds) {
 const mapStateToProps = (state) => {
   let drills = decorateDrills(state).entrySeq();
   let drill_index = state.getIn(['practice', 'current_drill_index']);
-  let current_drill = drills.get(drill_index)[1];
+  let drill_entry = drills.get(drill_index);
   let time_elapsed = state.getIn(['timer', 'time_elapsed']);
 
   return {
-    drill: current_drill,
+    drill: drill_entry && drill_entry[1],
     timer: state.get('timer'),
     time_elapsed: time_elapsed,
-    time_remaining: Math.round(current_drill.get('min') * 60) - time_elapsed
   };
 };
 

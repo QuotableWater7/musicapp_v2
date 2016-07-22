@@ -28,7 +28,7 @@ const DrillRow = ({ drill, removeDrill, updateDrill }) => {
             onChange={updateDrill}
           />
         </td>
-        <td className='text-xs-center'>{Math.round(drill.get('min'))}</td>
+        <td className='text-xs-center'>{Math.round(drill.get('sec') / 60)}</td>
         <td className='remove-row'>
           <i className='fa fa-remove' onClick={removeDrill}/>
         </td>

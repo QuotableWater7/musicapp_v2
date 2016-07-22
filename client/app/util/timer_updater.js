@@ -36,7 +36,7 @@ const stopTicking = () => {
 const isDrillComplete = (state) => {
   let time_elapsed = state.getIn(['timer', 'time_elapsed']);
   let current_drill = getCurrentDrill(state);
-  let time_for_drill = Math.round(current_drill.get('min') * 60);
+  let time_for_drill = current_drill.get('sec');
 
   return time_elapsed >= time_for_drill;
 };
