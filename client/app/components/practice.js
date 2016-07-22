@@ -6,6 +6,8 @@ import moment from 'moment';
 
 import decorateDrills from '../selectors/drills';
 
+import { startTimer, stopTimer } from '../actions/timer';
+
 const seconds_in_hour = 60 * 60;
 
 const Practice = ({ drill, time_elapsed, timer, startOrStopTimer }) => {
@@ -74,8 +76,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     startOrStopTimer(isOn) {
       return () => {
-        let action = isOn ? 'STOP_TIMER' : 'START_TIMER';
-        dispatch({ type: action });
+        let action = isOn ? stopTimer : startTimer;
+        dispatch(action());
       };
     }
   };
