@@ -5,5 +5,10 @@
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   %body
-    #app
-    = javascript_include_tag 'application'
+    .container
+      .row.margin-top-10
+        .col-md-12
+          - flash.each do |key, value|
+            - key = key == 'error' ? 'danger' : key
+            %div{class: "app-alert alert alert-#{key}"}= value.html_safe
+    = yield

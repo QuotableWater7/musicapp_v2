@@ -1,7 +1,5 @@
 class WelcomeController < ApplicationController
 
-  def index
-    render text: nil, layout: true
-  end
+  before_filter :require_login, only: :index
 
 end
