@@ -50,6 +50,7 @@ function addDrillsMessage() {
 }
 
 function formattedTime(seconds) {
+  seconds = roundToNearest15(seconds);
   let duration = moment.duration(seconds, 'seconds');
 
   if (seconds > seconds_in_hour) {
@@ -57,6 +58,10 @@ function formattedTime(seconds) {
   } else {
     return moment.utc(duration.asMilliseconds()).format('mm:ss');
   }
+}
+
+function roundToNearest15(seconds) {
+  return (seconds - seconds % 15) + Math.round((seconds % 15 / 15)) * 15;
 }
 
 const mapStateToProps = (state) => {
