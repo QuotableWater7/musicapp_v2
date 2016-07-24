@@ -1,8 +1,5 @@
 'use strict';
 
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
-
 import { Map } from 'immutable';
 
 import {
@@ -32,20 +29,11 @@ export default (state = default_state, action) => {
       user_id: action.user_id
     });
   case SIGN_IN_FAILURE:
-    return state.merge({ logging_in: false });
+    return state.merge({
+      logging_in: false,
+      user_id: null
+    });
   }
 
   return state;
-};
-
-export const signIn = (email, password) => {
-  return (dispatch) => {
-    dispatch({ type: REQUEST_SIGN_IN });
-
-    fetch('/sessions').then((response) => {
-      response.json().then((json) => {
-        dispatch({ type: SIGN_IN_SUCCESS, user_id: 'blee' });
-      });
-    });
-  };
 };

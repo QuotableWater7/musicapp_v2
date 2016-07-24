@@ -3,7 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { signIn, updateUser } from '../actions/user';
+import { signUserIn, updateUser } from '../actions/user';
 
 const SignIn = ({ user, updateUser, signIn }) => {
   return (
@@ -57,7 +57,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(updateUser(event.target.name, event.target.value))
     },
 
-    signIn(email, password) { () => { signIn } }
+    signIn(email, password) {
+      return () => { dispatch(signUserIn(email, password)) };
+    }
   };
 };
 

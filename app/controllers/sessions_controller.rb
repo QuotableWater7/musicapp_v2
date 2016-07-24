@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
           sign_in user
           render json: { success: true, user_id: user.id }
         else
-          render json: { success: false }
+          render json: { success: false }, status: 401
         end
       end
     end
