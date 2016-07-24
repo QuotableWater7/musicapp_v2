@@ -23,7 +23,7 @@ const Practice = ({ drill, time_elapsed, timer, startOrStopTimer }) => {
       <div className='row'>
         <div className='col-md-8 col-md-offset-2'>
           <div className='timer-countdown'>
-            <p className='countdown-text'>{formattedTime(drill.get('sec') - time_elapsed)}</p>
+            <p className='countdown-text'>{formattedTime(drill.get('sec'), time_elapsed)}</p>
             <img src='/assets/clock.jpg'/>
           </div>
         </div>
@@ -49,8 +49,8 @@ function addDrillsMessage() {
   );
 }
 
-function formattedTime(seconds) {
-  seconds = roundToNearest15(seconds);
+function formattedTime(total_time, time_elapsed) {
+  let seconds = roundToNearest15(total_time) - time_elapsed;
   let duration = moment.duration(seconds, 'seconds');
 
   if (seconds > seconds_in_hour) {
