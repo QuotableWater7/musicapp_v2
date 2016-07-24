@@ -5,7 +5,7 @@ import {render} from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import { combineReducers } from 'redux-immutable';
 import thunk from 'redux-thunk';
 
@@ -22,7 +22,10 @@ import timerUpdater from './util/timer_updater';
 import { fetchPractice } from './actions/practice';
 import { fetchUserInfo } from './actions/user';
 
-const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
+const store = createStore(
+  combineReducers(reducers),
+  applyMiddleware(routerMiddleware(hashHistory), thunk)
+);
 const history = syncHistoryWithStore(hashHistory, store, {
   selectLocationState (state) {
     return state.get('routing').toJS();
