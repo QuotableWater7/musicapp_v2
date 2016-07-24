@@ -13,6 +13,7 @@ import Layout from './components/layout';
 import Welcome from './components/welcome';
 import Setup from './components/setup';
 import Practice from './components/practice';
+import SignIn from './components/sign_in';
 
 import reducers from './reducers/index';
 
@@ -36,6 +37,7 @@ render(
         <IndexRoute component={Welcome}></IndexRoute>
         <Route path='/setup' component={Setup}></Route>
         <Route path='/practice' component={Practice}></Route>
+        <Route path='/sign-in' component={SignIn}></Route>
       </Route>
     </Router>
   </Provider>,

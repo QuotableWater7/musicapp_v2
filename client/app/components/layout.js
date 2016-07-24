@@ -14,18 +14,27 @@ const Layout = ({ children }) =>(
               Self Taught Music
             </Link>
           </div>
-          <ul className='nav navbar-nav'>
-            <li className='nav-item'>
-              <Link to='/setup' className='nav-link' activeClassName='active'>
-                Setup
-              </Link>
-            </li>
-            <li className='nav-item'>
-              <Link to='/practice' className='nav-link' activeClassName='active'>
-                Practice
-              </Link>
-            </li>
-          </ul>
+          <div className='navbar-collapse'>
+            <ul className='nav navbar-nav'>
+              <li className='nav-item'>
+                <Link to='/setup' className='nav-link' activeClassName='active'>
+                  Setup
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link to='/practice' className='nav-link' activeClassName='active'>
+                  Practice
+                </Link>
+              </li>
+            </ul>
+            <ul className='nav navbar-nav pull-xs-right'>
+              <li className='nav-item'>
+                <Link to='sign-in' className='nav-link' activeClassName='active'>
+                  Sign In
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
