@@ -14,3 +14,15 @@ export const post = (url, params) => {
     data: params
   });
 };
+
+export const get = (url) => {
+  return request({
+    url: url,
+    method: 'GET',
+    responseType: 'json',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    data: {}
+  });
+}

@@ -18,7 +18,9 @@ import SignIn from './components/sign_in';
 import reducers from './reducers/index';
 
 import timerUpdater from './util/timer_updater';
+
 import { fetchPractice } from './actions/practice';
+import { fetchUserInfo } from './actions/user';
 
 const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
 const history = syncHistoryWithStore(hashHistory, store, {
@@ -29,6 +31,7 @@ const history = syncHistoryWithStore(hashHistory, store, {
 
 store.subscribe(timerUpdater(store));
 store.dispatch(fetchPractice());
+store.dispatch(fetchUserInfo());
 
 render(
   <Provider store={store}>

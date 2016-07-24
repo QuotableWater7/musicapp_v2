@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   resources :practices, only: :show
   resources :sessions, only: [:new, :create, :destroy]
+  resources :welcome, only: :index
 
 end

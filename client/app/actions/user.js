@@ -1,6 +1,6 @@
 'use strict';
 
-import { post } from '../util/ajax_helper';
+import { get, post } from '../util/ajax_helper';
 
 export const REQUEST_SIGN_IN = 'REQUEST_SIGN_IN';
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
@@ -21,6 +21,16 @@ export const signUserIn = (email, password) => {
       },
       (error) => {
         dispatch({ type: SIGN_IN_FAILURE });
+      }
+    );
+  };
+};
+
+export const fetchUserInfo = () => {
+  return (dispatch) => {
+    get('/welcome.json').then(
+      (response) => {
+        dispatch({ type: SIGN_IN_SUCCESS, user_id: response.data.id })
       }
     );
   };
