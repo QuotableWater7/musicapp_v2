@@ -6,9 +6,12 @@ import { connect } from 'react-redux';
 import { signUserIn, updateUser } from '../actions/user';
 
 const SignIn = ({ user, updateUser, signIn }) => {
+  let errors = user.get('errors');
+
   return (
     <div className='row'>
       <div className='col-md-4 col-md-offset-4'>
+        {renderErrors(errors)}
         <form action='/sessions' method='post'>
           <fieldset className='form-group row'>
             <label htmlFor='email' className='col-md-3'>Email</label>
@@ -43,6 +46,16 @@ const SignIn = ({ user, updateUser, signIn }) => {
           </div>
         </form>
       </div>
+    </div>
+  );
+};
+
+const renderErrors = (errors) => {
+  if (!errors.size) { return false; }
+
+  return (
+    <div className='alert alert-danger'>
+      {errors.join(', ')}
     </div>
   );
 };

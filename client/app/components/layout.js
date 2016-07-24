@@ -2,8 +2,11 @@
 
 import React from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
-const Layout = ({ children }) =>(
+import { signUserOut } from '../actions/user';
+
+const Layout = ({ user, children, signOut }) =>(
   <div className='container'>
     <br/>
     <nav className='navbar navbar-light' style={{ background: '#e3f2fd' }}>
@@ -29,9 +32,7 @@ const Layout = ({ children }) =>(
             </ul>
             <ul className='nav navbar-nav pull-xs-right'>
               <li className='nav-item'>
-                <Link to='sign-in' className='nav-link' activeClassName='active'>
-                  Sign In
-                </Link>
+                {user.get('initialized') ? (user.get('user_id') ? signOutLink(signOut) : signInLink()) : false}
               </li>
             </ul>
           </div>
@@ -43,4 +44,35 @@ const Layout = ({ children }) =>(
   </div>
 );
 
-module.exports = Layout;
+const signInLink = () => {
+  return (
+    <Link to='sign-in' className='nav-link' activeClassName='active'>
+      Sign In
+    </Link>
+  );
+};
+
+const signOutLink = (signOut) => {
+  return (
+    <Link
+      to='/'
+      className='nav-link'
+      activeClassName='active'
+      onClick={signOut}
+    >
+      Sign Out
+    </Link>
+  );
+};
+
+const wrapper = connect(
+  (state) => {
+    return { user: state.get('user') };
+  },
+  (dispatch) => {
+    return {
+      signOut() { dispatch(signUserOut()); }
+    }
+  }
+)(Layout);
+export default wrapper;

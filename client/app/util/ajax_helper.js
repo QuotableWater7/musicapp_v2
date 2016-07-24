@@ -25,4 +25,17 @@ export const get = (url) => {
     },
     data: {}
   });
-}
+};
+
+export const destroy = (url) => {
+  return request({
+    url: url,
+    method: 'DELETE',
+    responseType: 'json',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': metaTagsManager.getCSRFToken()
+    },
+    data: {}
+  });
+};
