@@ -6,43 +6,60 @@ import { connect } from 'react-redux';
 
 import { signUserOut } from '../actions/user';
 
-const Layout = ({ user, children, signOut }) =>(
-  <div className='container'>
-    <br/>
-    <nav className='navbar navbar-light' style={{ background: '#e3f2fd' }}>
-      <div className='row toolbar-content'>
-        <div className='col-md-12'>
-          <div className='navbar-brand'>
-            <Link to='/' activeClassName='active'>
-              Self Taught Music
-            </Link>
-          </div>
-          <div className='navbar-collapse'>
-            <ul className='nav navbar-nav'>
-              <li className='nav-item'>
-                <Link to='/setup' className='nav-link' activeClassName='active'>
-                  Setup
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link to='/practice' className='nav-link' activeClassName='active'>
-                  Practice
-                </Link>
-              </li>
-            </ul>
-            <ul className='nav navbar-nav pull-xs-right'>
-              <li className='nav-item'>
-                {user.get('initialized') ? (user.get('user_id') ? signOutLink(signOut) : signInLink()) : false}
-              </li>
-            </ul>
+const Layout = ({ user, children, signOut }) => {
+  let user_data = user.get('user_data');
+
+  return (
+    <div className='container'>
+      <br/>
+      <nav className='navbar navbar-light' style={{ background: '#e3f2fd' }}>
+        <div className='row toolbar-content'>
+          <div className='col-md-12'>
+            <div className='navbar-brand'>
+              <Link to='/' activeClassName='active'>
+                Self Taught Music
+              </Link>
+            </div>
+            <div className='navbar-collapse'>
+              <ul className='nav navbar-nav'>
+                <li className='nav-item'>
+                  <Link to='/setup' className='nav-link' activeClassName='active'>
+                    Setup
+                  </Link>
+                </li>
+                <li className='nav-item'>
+                  <Link to='/practice' className='nav-link' activeClassName='active'>
+                    Practice
+                  </Link>
+                </li>
+              </ul>
+              <ul className='nav navbar-nav pull-xs-right'>
+                {renderUserInfo(user_data)}
+                <li className='nav-item'>
+                  {user.get('initialized') ? (user_data.get('id') ? signOutLink(signOut) : signInLink()) : false}
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-    <br/><br/>
-    {children}
-  </div>
-);
+      </nav>
+      <br/><br/>
+      {children}
+    </div>
+  );
+};
+
+const renderUserInfo = (user_data) => {
+  if (!user_data.get('first_name')) { return; }
+
+  return (
+    <li className='nav-item'>
+      <a href='#' className='nav-link' onClick={e => e.preventDefault()}>
+        {user_data.get('first_name')}
+      </a>
+    </li>
+  );
+};
 
 const signInLink = () => {
   return (

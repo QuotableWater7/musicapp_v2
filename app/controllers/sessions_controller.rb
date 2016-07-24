@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       format.json do
         if user && user.authenticate(params[:session][:password])
           sign_in user
-          render json: { success: true, user_id: user.id }
+          render json: user
         else
           render json: { success: false }, status: 401
         end

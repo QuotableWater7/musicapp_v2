@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   validates :email, presence: true
-  validates :password, length: { minimum: 4 }
+  validates :password, presence: true
 
   before_create :create_remember_token
 

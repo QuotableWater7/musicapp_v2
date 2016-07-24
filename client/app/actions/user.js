@@ -20,7 +20,7 @@ export const signUserIn = (email, password) => {
 
     post('/sessions.json', { email, password }).then(
       (response) => {
-        dispatch({ type: SIGN_IN_SUCCESS, user_id: response.data.user_id });
+        dispatch({ type: SIGN_IN_SUCCESS, user_data: response.data });
         dispatch(push('/setup'));
       },
       (error) => {
@@ -41,7 +41,7 @@ export const fetchUserInfo = () => {
   return (dispatch) => {
     get('/welcome.json').then(
       (response) => {
-        dispatch({ type: SIGN_IN_SUCCESS, user_id: response.data.id })
+        dispatch({ type: SIGN_IN_SUCCESS, user_data: response.data })
       }
     );
   };

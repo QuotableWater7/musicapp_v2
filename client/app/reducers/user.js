@@ -16,7 +16,8 @@ const default_state = Map({
   password: null,
   user_id: null,
   logging_in: false,
-  errors: List()
+  errors: List(),
+  user_data: Map()
 });
 
 export default (state = default_state, action) => {
@@ -34,14 +35,14 @@ export default (state = default_state, action) => {
       initialized: true,
       logging_in: false,
       logged_in: true,
-      user_id: action.user_id
+      user_data: action.user_data
     });
   case SIGN_IN_FAILURE:
     return state.merge({
       logging_in: false,
       logged_in: false,
       errors: List(['Your email and/or password was incorrect.']),
-      user_id: null
+      user_data: Map()
     });
   }
 
