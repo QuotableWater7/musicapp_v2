@@ -1,8 +1,11 @@
 'use strict';
 
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default () => {
+import { signIn, updateUser } from '../actions/user';
+
+const SignIn = ({ user, updateUser, signIn }) => {
   return (
     <div className='row'>
       <div className='col-md-4 col-md-offset-4'>
@@ -10,20 +13,53 @@ export default () => {
           <fieldset className='form-group row'>
             <label htmlFor='email' className='col-md-3'>Email</label>
             <div className='col-md-9'>
-              <input type='email' id='email' className='form-control'/>
+              <input
+                type='email'
+                id='email'
+                name='email'
+                value={user.get('email') || ''}
+                className='form-control'
+                onChange={updateUser}
+              />
             </div>
           </fieldset>
           <fieldset className='form-group row'>
             <label htmlFor='password' className='col-md-3'>Password</label>
             <div className='col-md-9'>
-              <input type='password' id='password' className='form-control'/>
+              <input
+                type='password'
+                id='password'
+                name='password'
+                className='form-control'
+                value={user.get('password') || ''}
+                onChange={updateUser}
+              />
             </div>
           </fieldset>
           <div className='text-xs-center'>
-            <div className='btn btn-primary'>Sign In</div>
+            <div className='btn btn-primary' onClick={signIn(user.get('email'), user.get('password'))}>
+              Sign In
+            </div>
           </div>
         </form>
       </div>
     </div>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return { user: state.get('user') }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateUser(event) {
+      dispatch(updateUser(event.target.name, event.target.value))
+    },
+
+    signIn(email, password) { () => { signIn } }
+  };
+};
+
+const wrapper = connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default wrapper;
