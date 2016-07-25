@@ -1,6 +1,6 @@
 'use strict';
 
-import drills from './drills';
+import drill_list from './drill_list';
 import routing from './routing';
 import practice from './practice';
 import timer from './timer';
@@ -8,7 +8,7 @@ import user from './user';
 
 export default {
   user,
-  drills,
+  drill_list,
   routing,
   practice,
   timer

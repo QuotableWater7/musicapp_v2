@@ -50,7 +50,7 @@ const getCurrentDrill = (state) => {
 };
 
 const setToNextActivity = (state, dispatch) => {
-  let number_of_drills = state.get('drills').size;
+  let number_of_drills = state.get('drill_list').size;
   let next_drill_index = state.getIn(['practice', 'current_drill_index']) + 1;
 
   if (next_drill_index < number_of_drills) {

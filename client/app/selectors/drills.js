@@ -2,7 +2,7 @@
 
 import { createSelector } from 'reselect';
 
-const getDrills = (state) => state.get('drills');
+const getDrills = (state) => state.get('drill_list');
 const getTotalTime = (state) => state.get('practice').get('total_time');
 
 export default createSelector(
