@@ -11,8 +11,9 @@ import thunk from 'redux-thunk';
 
 import Layout from './components/layout';
 import Welcome from './components/welcome';
-import Setup from './components/setup';
+import Practices from './components/practices';
 import Practice from './components/practice';
+import Timer from './components/timer';
 import SignIn from './components/sign_in';
 
 import reducers from './reducers/index';
@@ -41,8 +42,9 @@ render(
     <Router history={history}>
       <Route path='/' component={Layout}>
         <IndexRoute component={Welcome}></IndexRoute>
-        <Route path='/setup' component={Setup}></Route>
-        <Route path='/practice' component={Practice}></Route>
+        <Route path='/practices' component={Practices}></Route>
+        <Route path='/practice/:id' component={Practice}></Route>
+        <Route path='/timer' component={Timer}></Route>
         <Route path='/sign-in' component={SignIn}></Route>
       </Route>
     </Router>

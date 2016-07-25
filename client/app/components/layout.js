@@ -23,13 +23,8 @@ const Layout = ({ user, children, signOut }) => {
             <div className='navbar-collapse'>
               <ul className='nav navbar-nav'>
                 <li className='nav-item'>
-                  <Link to='/setup' className='nav-link' activeClassName='active'>
-                    Setup
-                  </Link>
-                </li>
-                <li className='nav-item'>
-                  <Link to='/practice' className='nav-link' activeClassName='active'>
-                    Practice
+                  <Link to='/practices' className='nav-link' activeClassName='active'>
+                    My Practices
                   </Link>
                 </li>
               </ul>
