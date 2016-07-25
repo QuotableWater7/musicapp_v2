@@ -28,9 +28,7 @@ const store = createStore(
   applyMiddleware(routerMiddleware(hashHistory), thunk)
 );
 const history = syncHistoryWithStore(hashHistory, store, {
-  selectLocationState (state) {
-    return state.get('routing').toJS();
-  }
+  selectLocationState(state) => state.get('routing').toJS()
 });
 
 store.subscribe(timerUpdater(store));
