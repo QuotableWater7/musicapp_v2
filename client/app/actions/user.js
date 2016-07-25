@@ -21,7 +21,7 @@ export const signUserIn = (email, password) => {
     post('/sessions.json', { email, password }).then(
       (response) => {
         dispatch({ type: SIGN_IN_SUCCESS, user_data: response.data });
-        dispatch(push('/setup'));
+        dispatch(push('/practices'));
       },
       (error) => {
         dispatch({ type: SIGN_IN_FAILURE });
