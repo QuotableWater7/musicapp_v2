@@ -16,4 +16,8 @@ class PracticesController < ApplicationController
     end
   end
 
+  def create
+
+  end
+
 end
