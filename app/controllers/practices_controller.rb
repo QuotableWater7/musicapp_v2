@@ -1,5 +1,14 @@
 class PracticesController < ApplicationController
 
+  def index
+    respond_to do |format|
+      format.json do
+        practices = current_user ? current_user.practices : []
+        render json: practices
+      end
+    end
+  end
+
   def show
     respond_to do |format|
       format.json do

@@ -21,8 +21,6 @@ export default (state = Map(), action) => {
     });
   case 'RESET_DRILL_WEIGHTS':
     return state.map((drill) => drill.merge({ weight: default_weight }));
-  case 'LOAD_DRILLS':
-    return fromJS(action.payload.drills);
   }
 
   return state;

@@ -20,7 +20,7 @@ import reducers from './reducers/index';
 
 import timerUpdater from './util/timer_updater';
 
-import { fetchPractice } from './actions/practice';
+import { fetchPractices } from './actions/practice';
 import { fetchUserInfo } from './actions/user';
 
 const store = createStore(
@@ -28,11 +28,11 @@ const store = createStore(
   applyMiddleware(routerMiddleware(hashHistory), thunk)
 );
 const history = syncHistoryWithStore(hashHistory, store, {
-  selectLocationState(state) => state.get('routing').toJS()
+  selectLocationState(state) { return state.get('routing').toJS(); }
 });
 
 store.subscribe(timerUpdater(store));
-store.dispatch(fetchPractice());
+store.dispatch(fetchPractices());
 store.dispatch(fetchUserInfo());
 
 render(
