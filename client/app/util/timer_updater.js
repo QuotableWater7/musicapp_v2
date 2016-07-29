@@ -1,5 +1,3 @@
-'use strict';
-
 import decorateDrills from '../selectors/drills';
 
 let timer_ref = null;

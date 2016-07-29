@@ -1,5 +1,3 @@
-'use strict';
-
 import { createSelector } from 'reselect';
 
 const getDrills = (state) => state.get('drill_list');

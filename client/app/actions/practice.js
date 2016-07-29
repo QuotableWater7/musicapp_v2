@@ -1,5 +1,3 @@
-'use strict';
-
 import { get } from '../util/ajax_helper';
 
 // THESE PROBABLY DON'T BELONG HERE?

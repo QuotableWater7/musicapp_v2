@@ -1,5 +1,3 @@
-'use strict';
-
 import { Map, List, fromJS } from 'immutable';
 
 const default_weight = 50;

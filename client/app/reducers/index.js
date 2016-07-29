@@ -1,5 +1,3 @@
-'use strict';
-
 import { combineReducers } from 'redux-immutable';
 
 import drill_list from './drill_list';

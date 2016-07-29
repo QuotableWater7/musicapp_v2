@@ -1,5 +1,3 @@
-'use strict';
-
 import request from 'axios';
 import metaTagsManager from './meta_tags_manager';
 

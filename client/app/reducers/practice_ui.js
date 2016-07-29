@@ -1,5 +1,3 @@
-'use strict';
-
 import { Map } from 'immutable';
 
 const default_state = Map();

@@ -1,5 +1,3 @@
-'use strict';
-
 import { push } from 'react-router-redux';
 
 import { get, post, destroy } from '../util/ajax_helper';
