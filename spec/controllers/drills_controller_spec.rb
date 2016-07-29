@@ -19,4 +19,18 @@ RSpec.describe DrillsController do
     end
   end
 
+  describe '#create' do
+
+    it 'creates a drill for the given practice' do
+      user = users(:user_1)
+      practice = user.practices.create!(name: 'Practice', total_time: 1)
+      drill_params = { practice_id: practice.id, name: 'Drill 1', weight: 99 }
+      post(:create, drill: drill_params, format: :json)
+
+      drill = JSON.parse(response.body)
+      expect(drill).to eq Drill.find_by(drill_params).as_json
+    end
+
+  end
+
 end
