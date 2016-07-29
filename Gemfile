@@ -13,10 +13,8 @@ gem 'sass-rails'
 
 group :development, :test do
   gem 'byebug'
-  gem 'spring'
-end
-
-group :test do
+  gem 'rails-controller-testing', git: 'https://github.com/rails/rails-controller-testing'
   gem 'rspec'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'spring'
 end
