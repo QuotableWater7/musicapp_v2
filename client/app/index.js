@@ -6,7 +6,6 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
-import { combineReducers } from 'redux-immutable';
 import thunk from 'redux-thunk';
 
 import Layout from './components/layout';
@@ -16,7 +15,7 @@ import Practice from './components/practice';
 import Timer from './components/timer';
 import SignIn from './components/sign_in';
 
-import reducers from './reducers/index';
+import reducer from './reducers/index';
 
 import timerUpdater from './util/timer_updater';
 
@@ -24,7 +23,7 @@ import { fetchPractices } from './actions/practice';
 import { fetchUserInfo } from './actions/user';
 
 const store = createStore(
-  combineReducers(reducers),
+  reducer,
   applyMiddleware(routerMiddleware(hashHistory), thunk)
 );
 const history = syncHistoryWithStore(hashHistory, store, {
