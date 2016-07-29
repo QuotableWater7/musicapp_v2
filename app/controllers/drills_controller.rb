@@ -3,7 +3,7 @@ class DrillsController < ApplicationController
   def index
     respond_to do |format|
       format.json do
-        drills = Drill.where(practice_id: params[:drills][:practice_id])
+        drills = Drill.where(drills_params)
         render json: drills
       end
     end
@@ -19,6 +19,10 @@ class DrillsController < ApplicationController
   end
 
 private
+
+  def drills_params
+    params.require(:drills).permit(:practice_id)
+  end
 
   def drill_params
     params.require(:drill).permit(:practice_id, :name, :weight, :weekday)
