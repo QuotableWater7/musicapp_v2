@@ -7,12 +7,16 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'font-awesome-rails'
 gem 'haml'
 gem 'pg'
-gem 'turbolinks'
 
 # assets
 gem 'sass-rails'
 
-group :development do
+group :development, :test do
   gem 'byebug'
   gem 'spring'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
 end
