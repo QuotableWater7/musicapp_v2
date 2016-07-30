@@ -29,9 +29,10 @@ export default (state = default_state, action) => {
   case FETCH_PRACTICE_FAILURE:
     return default_state.merge({});
   case CREATE_PRACTICE_SUCCESS:
-    console.log('yay', action.payload);
-    return state;
+    const practice = action.payload;
+    return state.merge({ [practice.id]: practice });
   }
 
   return state;
 };
+
