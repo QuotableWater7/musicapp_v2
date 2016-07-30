@@ -42,4 +42,17 @@ RSpec.describe PracticesController do
     end
   end
 
+  describe '#delete' do
+    it 'deletes a practice with the given ID' do
+      practice = user.practices.create!(name: 'bloop', total_time: 25)
+
+      expect do
+        post(:destroy, format: :json, id: practice.id)
+      end.to change(Practice, :count).by(-1)
+
+      expect(JSON.parse(response.body)['deleted_practice']).to eq practice.id
+      expect(Practice.find_by_id(practice.id)).to be nil
+    end
+  end
+
 end
