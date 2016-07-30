@@ -4,6 +4,7 @@ class DrillsController < ApplicationController
     respond_to do |format|
       format.json do
         drills = Drill.where(drills_params)
+
         render json: drills
       end
     end
@@ -24,6 +25,7 @@ class DrillsController < ApplicationController
     respond_to do |format|
       format.json do
         drill = Drill.create!(drill_params)
+
         render json: drill
       end
     end
