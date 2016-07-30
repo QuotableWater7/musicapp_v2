@@ -29,6 +29,17 @@ class DrillsController < ApplicationController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      format.json do
+        drill = Drill.find(params[:id])
+        drill.destroy
+
+        render json: { deleted_drill: drill.id }
+      end
+    end
+  end
+
 private
 
   def drills_params

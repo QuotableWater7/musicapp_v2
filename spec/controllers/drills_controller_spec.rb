@@ -52,4 +52,18 @@ RSpec.describe DrillsController do
 
   end
 
+  describe '#delete' do
+    it 'deletes a drill with the given ID' do
+      practice = user.practices.create!(name: 'bloop', total_time: 25)
+      drill = practice.drills.create!(name: 'drill')
+
+      expect do
+        post(:destroy, format: :json, id: drill.id)
+      end.to change(Drill, :count).by(-1)
+
+      expect(JSON.parse(response.body)['deleted_drill']).to eq drill.id
+      expect(Drill.find_by_id(drill.id)).to be nil
+    end
+  end
+
 end
