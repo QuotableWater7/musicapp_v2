@@ -32,7 +32,7 @@ class PracticesController < ApplicationController
 private
 
   def practice_params
-    params.require(:practice).permit(:name, :total_time)
+    params.require(:practice).permit(:name, :total_time, :user_id)
   end
 
 end

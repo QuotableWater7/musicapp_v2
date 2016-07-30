@@ -1,4 +1,5 @@
 import { Map } from 'immutable';
+import _ from 'lodash';
 
 import {
   UPDATE_TOTAL_TIME,
@@ -7,12 +8,10 @@ import {
   FETCH_PRACTICE,
   FETCH_PRACTICE_SUCCESS,
   FETCH_PRACTICE_FAILURE,
+  CREATE_PRACTICE_SUCCESS,
 } from '../actions/practice';
 
-const default_state = Map({
-  total_time: 90,
-  current_drill_index: 0
-});
+const default_state = Map();
 
 export default (state = default_state, action) => {
   switch (action.type) {
@@ -22,10 +21,16 @@ export default (state = default_state, action) => {
     return state.merge({ current_drill_index: action.current_drill_index })
   case TIMER_COMPLETED:
     return state.merge({ current_drill_index : state.get('current_drill_index') + 1 });
+  case FETCH_PRACTICE:
+    return state;
   case FETCH_PRACTICE_SUCCESS:
-    return state.merge(action.payload);
+    const practices = _.keyBy(action.payload, 'id');
+    return state.merge(practices);
   case FETCH_PRACTICE_FAILURE:
     return default_state.merge({});
+  case CREATE_PRACTICE_SUCCESS:
+    console.log('yay', action.payload);
+    return state;
   }
 
   return state;

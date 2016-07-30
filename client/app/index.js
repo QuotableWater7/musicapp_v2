@@ -29,8 +29,8 @@ const history = syncHistoryWithStore(hashHistory, store, {
 });
 
 store.subscribe(timerUpdater(store));
-store.dispatch(fetchPractices());
 store.dispatch(fetchUserInfo());
+store.dispatch(fetchPractices());
 
 render(
   <Provider store={store}>
