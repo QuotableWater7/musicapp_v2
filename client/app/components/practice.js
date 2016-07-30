@@ -8,7 +8,7 @@ const Practice = () => (
   <div>
     <div className='row margin-top-10'>
       <div className='col-md-12 text-xs-center'>
-        Total time <TotalTimeSelector/>
+
       </div>
     </div>
     <div className='row margin-top-10'>

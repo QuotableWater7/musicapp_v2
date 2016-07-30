@@ -1,7 +1,28 @@
 import { createSelector } from 'reselect';
+import _ from 'lodash';
 
-const getDrills = (state) => state.get('drill_list');
-const getTotalTime = (state) => state.get('practice').get('total_time');
+const getPracticeID = (state) => {
+  return _.last(
+    state.get('routing')
+      .toJSON()
+      .locationBeforeTransitions
+      .pathname
+      .split('/')
+  );
+};
+
+const getDrills = (state) => {
+  const practice_id = Number(getPracticeID(state));
+  return state.get('drill_list').filter(
+    drill => drill.get('practice_id') === practice_id
+  );
+};
+
+const getTotalTime = (state) => {
+  const practice_id = getPracticeID(state);
+
+  return state.get('practices').get(practice_id).get('total_time');
+};
 
 export default createSelector(
   [getDrills, getTotalTime],
