@@ -9,6 +9,17 @@ class PracticesController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      format.json do
+        practice = Practice.find(params[:id])
+        practice.update!(practice_params)
+
+        render json: practice
+      end
+    end
+  end
+
   def create
     respond_to do |format|
       format.json do
