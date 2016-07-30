@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :practices, only: [:index, :create]
-  resources :drills, only: [:index, :create]
+  resources :drills, only: [:index, :create, :update]
   resources :sessions, only: [:new, :create]
-  delete :sessions, to: 'sessions#destroy', via: :delete
   resources :welcome, only: :index
+
+  delete :sessions, to: 'sessions#destroy', via: :delete
 
 end

@@ -1,7 +1,10 @@
 RSpec.describe DrillsController do
 
+  let(:user) { users(:user_1) }
+
+  before(:each) { login_as(user) }
+
   describe '#index' do
-    let(:user) { users(:user_1) }
 
     it 'returns drills for the given practice_id' do
       practice = user.practices.create!(name: 'Practice', total_time: 90)
@@ -22,13 +25,29 @@ RSpec.describe DrillsController do
   describe '#create' do
 
     it 'creates a drill for the given practice' do
-      user = users(:user_1)
       practice = user.practices.create!(name: 'Practice', total_time: 1)
       drill_params = { practice_id: practice.id, name: 'Drill 1', weight: 99 }
       post(:create, drill: drill_params, format: :json)
 
       drill = JSON.parse(response.body)
       expect(drill).to eq Drill.find_by(drill_params).as_json
+    end
+
+  end
+
+  describe '#update' do
+
+    it 'updates the given drill' do
+      practice = user.practices.create!(name: 'Practice', total_time: 1)
+      drill = practice.drills.create!(name: 'Drill 1', weight: 99)
+
+      drill_params = { id: drill.id, name: 'Drill One', weight: 2 }
+
+      expect do
+        put(:update, format: :json, id: drill.id, drill: drill_params)
+      end.to change { drill.reload.name }.from('Drill 1').to('Drill One')
+
+      expect(JSON.parse(response.body)['name']).to eq 'Drill One'
     end
 
   end
