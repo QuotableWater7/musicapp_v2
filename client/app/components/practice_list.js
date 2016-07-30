@@ -26,8 +26,8 @@ const PracticeList = ({ practices, createPractice }) => {
 
 const renderPractice = ([id, practice]) => {
   return (
-    <div key={practice.get('id')}>
-      {practice.get('name')}
+    <div key={id}>
+      <Link to={'practice/' + id}>{practice.get('name')}</Link>
     </div>
   );
 };
