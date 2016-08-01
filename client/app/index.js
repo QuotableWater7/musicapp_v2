@@ -10,6 +10,7 @@ import Layout from './components/layout';
 import Welcome from './components/welcome';
 import PracticeList from './components/practice_list';
 import Practice from './components/practice';
+import PracticeContainer from './containers/practice';
 import Timer from './components/timer';
 import SignIn from './components/sign_in';
 
@@ -38,7 +39,7 @@ render(
       <Route path='/' component={Layout}>
         <IndexRoute component={Welcome}></IndexRoute>
         <Route path='/practices' component={PracticeList}></Route>
-        <Route path='/practice/:id' component={Practice}></Route>
+        <Route path='/practice/:id' component={PracticeContainer}></Route>
         <Route path='/timer' component={Timer}></Route>
         <Route path='/sign-in' component={SignIn}></Route>
       </Route>
