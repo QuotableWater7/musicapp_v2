@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import DrillRow from './drill_row';
 import decorateDrills from '../selectors/drills';
 
@@ -40,7 +41,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addDrill(event) {
       event.preventDefault();
-      dispatch({ type: 'ADD_DRILL' });
+      createDrill()
     },
 
     removeDrill(id) {
