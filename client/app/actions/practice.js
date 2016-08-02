@@ -5,9 +5,9 @@ export const UPDATE_TOTAL_TIME = 'UPDATE_TOTAL_TIME';
 export const RESET_TIMER = 'RESET_TIMER';
 export const TIMER_COMPLETED = 'TIMER_COMPLETED';
 
-export const FETCH_PRACTICE = 'FETCH_PRACTICE';
-export const FETCH_PRACTICE_SUCCESS = 'FETCH_PRACTICE_SUCCESS';
-export const FETCH_PRACTICE_FAILURE = 'FETCH_PRACTICE_FAILURE';
+export const FETCH_PRACTICES = 'FETCH_PRACTICES';
+export const FETCH_PRACTICES_SUCCESS = 'FETCH_PRACTICES_SUCCESS';
+export const FETCH_PRACTICES_FAILURE = 'FETCH_PRACTICES_FAILURE';
 
 export const CREATE_PRACTICE = 'CREATE_PRACTICE';
 export const CREATE_PRACTICE_SUCCESS = 'CREATE_PRACTICE_SUCCESS';
@@ -15,14 +15,14 @@ export const CREATE_PRACTICE_FAILURE = 'CREATE_PRACTICE_FAILURE';
 
 export const fetchPractices = () => {
   return (dispatch) => {
-    dispatch({ type: FETCH_PRACTICE });
+    dispatch({ type: FETCH_PRACTICES });
 
     get('/practices.json').then(
       (response) => {
-        dispatch({ type: FETCH_PRACTICE_SUCCESS, payload: response.data });
+        dispatch({ type: FETCH_PRACTICES_SUCCESS, payload: response.data });
       },
       (error) => {
-        dispatch({ type: FETCH_PRACTICE_FAILURE });
+        dispatch({ type: FETCH_PRACTICES_FAILURE });
       }
     );
   };
