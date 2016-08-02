@@ -8,6 +8,21 @@ export const CREATE_DRILL = 'CREATE_DRILL';
 export const CREATE_DRILL_SUCCESS = 'CREATE_DRILL_SUCCESS';
 export const CREATE_DRILL_FAILURE = 'CREATE_DRILL_FAILURE';
 
+export const fetchDrills = () => {
+  return (dispatch) => {
+    dispatch({ type: FETCH_DRILLS });
+
+    get('/practices.json').then(
+      (response) => {
+        dispatch({ type: FETCH_DRILLS_SUCCESS, payload: response.data });
+      },
+      (error) => {
+        dispatch({ type: FETCH_DRILLS_FAILURE });
+      }
+    );
+  };
+};
+
 export const createDrill = (practice_id) => {
   return (dispatch) => {
     dispatch({ type: CREATE_DRILL });

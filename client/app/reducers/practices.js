@@ -5,9 +5,8 @@ import {
   UPDATE_TOTAL_TIME,
   RESET_TIMER,
   TIMER_COMPLETED,
-  FETCH_PRACTICE,
-  FETCH_PRACTICE_SUCCESS,
-  FETCH_PRACTICE_FAILURE,
+  FETCH_PRACTICES_SUCCESS,
+  FETCH_PRACTICES_FAILURE,
   CREATE_PRACTICE_SUCCESS,
 } from '../actions/practice';
 
@@ -21,12 +20,10 @@ export default (state = default_state, action) => {
     return state.merge({ current_drill_index: action.current_drill_index })
   case TIMER_COMPLETED:
     return state.merge({ current_drill_index : state.get('current_drill_index') + 1 });
-  case FETCH_PRACTICE:
-    return state;
-  case FETCH_PRACTICE_SUCCESS:
+  case FETCH_PRACTICES_SUCCESS:
     const practices = _.keyBy(action.payload, 'id');
     return state.merge(practices);
-  case FETCH_PRACTICE_FAILURE:
+  case FETCH_PRACTICES_FAILURE:
     return default_state.merge({});
   case CREATE_PRACTICE_SUCCESS:
     const practice = action.payload;
