@@ -20,7 +20,7 @@ const Practice = ({ practice }) => {
       </div>
       <div className='row margin-top-10'>
         <div className='col-md-12 text-xs-center'>
-          <Link to='/timer' className='btn btn-primary'>Begin!</Link>
+          <Link to='/app/timer' className='btn btn-primary'>Begin!</Link>
         </div>
       </div>
     </div>

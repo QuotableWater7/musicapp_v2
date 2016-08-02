@@ -27,7 +27,7 @@ const PracticeList = ({ practices, createPractice }) => {
 const renderPractice = ([id, practice]) => {
   return (
     <div key={id}>
-      <Link to={`practice/${id}`}>{practice.get('name')}</Link>
+      <Link to={`/app/practice/${id}`}>{practice.get('name')}</Link>
     </div>
   );
 };

@@ -14,14 +14,14 @@ const Layout = ({ user, children, signOut }) => {
         <div className='row toolbar-content'>
           <div className='col-md-12'>
             <div className='navbar-brand'>
-              <Link to='/' activeClassName='active'>
+              <Link to='/app' activeClassName='active'>
                 Self Taught Music
               </Link>
             </div>
             <div className='navbar-collapse'>
               <ul className='nav navbar-nav'>
                 <li className='nav-item'>
-                  <Link to='/practices' className='nav-link' activeClassName='active'>
+                  <Link to='/app/practices' className='nav-link' activeClassName='active'>
                     My Practices
                   </Link>
                 </li>
@@ -56,7 +56,7 @@ const renderUserInfo = (user_data) => {
 
 const signInLink = () => {
   return (
-    <Link to='sign-in' className='nav-link' activeClassName='active'>
+    <Link to='/app/sign-in' className='nav-link' activeClassName='active'>
       Sign In
     </Link>
   );
@@ -65,7 +65,7 @@ const signInLink = () => {
 const signOutLink = (signOut) => {
   return (
     <Link
-      to='/'
+      to='/app'
       className='nav-link'
       activeClassName='active'
       onClick={signOut}

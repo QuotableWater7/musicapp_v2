@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute, Redirect } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 
@@ -23,9 +23,9 @@ import { fetchUserInfo } from './actions/user';
 
 const store = createStore(
   reducer,
-  applyMiddleware(routerMiddleware(hashHistory), thunk)
+  applyMiddleware(routerMiddleware(browserHistory), thunk)
 );
-const history = syncHistoryWithStore(hashHistory, store, {
+const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState(state) { return state.get('routing').toJS(); }
 });
 
@@ -36,13 +36,14 @@ store.dispatch(fetchPractices());
 render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path='/' component={Layout}>
+      <Route path='/app' component={Layout}>
         <IndexRoute component={Welcome}></IndexRoute>
-        <Route path='/practices' component={PracticeList}></Route>
-        <Route path='/practice/:id' component={PracticeContainer}></Route>
-        <Route path='/timer' component={Timer}></Route>
-        <Route path='/sign-in' component={SignIn}></Route>
+        <Route path='/app/practices' component={PracticeList}></Route>
+        <Route path='/app/practice/:id' component={PracticeContainer}></Route>
+        <Route path='/app/timer' component={Timer}></Route>
+        <Route path='/app/sign-in' component={SignIn}></Route>
       </Route>
+      <Redirect from='/' to='/app' />
     </Router>
   </Provider>,
   document.getElementById('app')

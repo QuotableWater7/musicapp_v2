@@ -19,7 +19,7 @@ export const signUserIn = (email, password) => {
     post('/sessions.json', { email, password }).then(
       (response) => {
         dispatch({ type: SIGN_IN_SUCCESS, user_data: response.data });
-        dispatch(push('/practices'));
+        dispatch(push('/app/practices'));
       },
       (error) => {
         dispatch({ type: SIGN_IN_FAILURE });
@@ -37,7 +37,7 @@ export const signUserOut = () => {
 
 export const fetchUserInfo = () => {
   return (dispatch) => {
-    get('/welcome.json').then(
+    get('/app.json').then(
       (response) => {
         dispatch({ type: SIGN_IN_SUCCESS, user_data: response.data })
       }
