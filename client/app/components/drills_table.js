@@ -7,7 +7,6 @@ import decorateDrills from '../selectors/drills';
 import { createDrill } from '../actions/drill';
 
 const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill, resetDrillWeights, practice_id }) => {
-
   return (
     <table className='table table-hover drills-table'>
       <thead className='thead-inverse no-select'>

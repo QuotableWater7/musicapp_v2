@@ -3,7 +3,8 @@ class DrillsController < ApplicationController
   def index
     respond_to do |format|
       format.json do
-        drills = Drill.where(drills_params)
+        drills = Drill.joins(:practice)
+          .where(practices: { user_id: current_user.id })
 
         render json: drills
       end

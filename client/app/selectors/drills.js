@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect';
-import _ from 'lodash';
 
 const getDrills = (state, props) => {
-  const { id } = props.params;
+  const id = Number(props.params.id);
+  const drills = state.get('drill_list');
 
-  return state.get('drill_list').filter(
-    drill => drill.get('practice_id') === id
-  );
+  return drills.filter((drill) => {
+    return drill.get('practice_id') === id;
+  });
 };
 
 const getTotalTime = (state, props) => {

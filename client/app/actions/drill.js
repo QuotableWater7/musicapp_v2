@@ -12,7 +12,7 @@ export const fetchDrills = () => {
   return (dispatch) => {
     dispatch({ type: FETCH_DRILLS });
 
-    get('/practices.json').then(
+    get('/drills.json').then(
       (response) => {
         dispatch({ type: FETCH_DRILLS_SUCCESS, payload: response.data });
       },

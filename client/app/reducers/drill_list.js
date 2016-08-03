@@ -1,4 +1,7 @@
+import _ from 'lodash';
 import { Map, List, fromJS } from 'immutable';
+
+import { FETCH_DRILLS_SUCCESS } from '../actions/drill';
 
 const default_weight = 50;
 let current_id = 0;
@@ -19,6 +22,8 @@ export default (state = Map(), action) => {
     });
   case 'RESET_DRILL_WEIGHTS':
     return state.map((drill) => drill.merge({ weight: default_weight }));
+  case FETCH_DRILLS_SUCCESS:
+    return fromJS(_.keyBy(action.payload, 'id'));
   }
 
   return state;
