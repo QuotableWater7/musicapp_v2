@@ -18,8 +18,9 @@ import reducer from './reducers/index';
 
 import timerUpdater from './util/timer_updater';
 
-import { fetchPractices } from './actions/practice';
 import { fetchUserInfo } from './actions/user';
+import { fetchPractices } from './actions/practice';
+import { fetchDrills } from './actions/drill';
 
 const store = createStore(
   reducer,
@@ -32,6 +33,7 @@ const history = syncHistoryWithStore(browserHistory, store, {
 store.subscribe(timerUpdater(store));
 store.dispatch(fetchUserInfo());
 store.dispatch(fetchPractices());
+store.dispatch(fetchDrills());
 
 render(
   <Provider store={store}>
