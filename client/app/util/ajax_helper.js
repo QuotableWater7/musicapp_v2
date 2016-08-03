@@ -33,7 +33,6 @@ export const destroy = (url) => {
     headers: {
       'Content-Type': 'application/json',
       'X-CSRF-Token': metaTagsManager.getCSRFToken()
-    },
-    data: {}
+    }
   });
 };

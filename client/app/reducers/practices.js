@@ -8,6 +8,7 @@ import {
   FETCH_PRACTICES_SUCCESS,
   FETCH_PRACTICES_FAILURE,
   CREATE_PRACTICE_SUCCESS,
+  DELETE_PRACTICE_SUCCESS
 } from '../actions/practice';
 
 const default_state = Map();
@@ -28,6 +29,9 @@ export default (state = default_state, action) => {
   case CREATE_PRACTICE_SUCCESS:
     const practice = action.payload;
     return state.merge({ [practice.id]: practice });
+  case DELETE_PRACTICE_SUCCESS:
+  console.log('delete success')
+    return state.delete(action.id);
   }
 
   return state;
