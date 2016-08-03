@@ -24,7 +24,7 @@ class PracticesController < ApplicationController
   def create
     respond_to do |format|
       format.json do
-        practice = Practice.create!(practice_params)
+        practice = Practice.create!(practice_params.merge(user_id: current_user.id))
 
         render json: practice
       end
@@ -35,7 +35,10 @@ class PracticesController < ApplicationController
     respond_to do |format|
       format.json do
         practice = Practice.find(params[:id])
+        drills = Drill.where(practice_id: params[:id])
+
         practice.destroy
+        drills.destroy_all
 
         render json: { deleted_practice: practice.id }
       end

@@ -45,11 +45,8 @@ export const fetchPractices = () => {
 };
 
 export const createPractice = (opts) => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch({ type: CREATE_PRACTICE });
-
-    const user_id = getState().getIn(['user', 'user_data', 'id']);
-    opts = { ...opts, user_id };
 
     post('/practices.json', { practice: opts }).then(
       (response) => {

@@ -43,8 +43,9 @@ RSpec.describe PracticesController do
   end
 
   describe '#delete' do
-    it 'deletes a practice with the given ID' do
+    it 'deletes a practice and associated drills with the given ID' do
       practice = user.practices.create!(name: 'bloop', total_time: 25)
+      drill = practice.drills.create!(name: 'Drill', weight: 20)
 
       expect do
         post(:destroy, format: :json, id: practice.id)
@@ -52,6 +53,7 @@ RSpec.describe PracticesController do
 
       expect(JSON.parse(response.body)['deleted_practice']).to eq practice.id
       expect(Practice.find_by_id(practice.id)).to be nil
+      expect(Drill.find_by(practice_id: practice.id)).to be nil
     end
   end
 

@@ -30,7 +30,6 @@ export default (state = default_state, action) => {
     const practice = action.payload;
     return state.merge({ [practice.id]: practice });
   case DELETE_PRACTICE_SUCCESS:
-  console.log('delete success')
     return state.delete(action.id);
   }
 
