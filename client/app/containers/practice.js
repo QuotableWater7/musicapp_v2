@@ -4,10 +4,12 @@ import { connect } from 'react-redux';
 import Practice from '../components/practice';
 import DrillsTable from '../components/drills_table';
 
-const PracticeContainer = ({ practice, drills }) => {
+import getDrills from '../selectors/drills';
+
+const PracticeContainer = ({ practice, drills, params }) => {
   return (
     <Practice practice={practice}>
-      <DrillsTable drills={drills}/>
+      <DrillsTable drills={drills} practice_id={params.id}/>
     </Practice>
   );
 };
@@ -17,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     practice: state.getIn(['practices', id]),
-    drills: []
+    drills: getDrills(state, ownProps).entrySeq()
   };
 };
 

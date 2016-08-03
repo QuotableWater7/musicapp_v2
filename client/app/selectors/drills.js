@@ -1,27 +1,21 @@
 import { createSelector } from 'reselect';
 import _ from 'lodash';
 
-const getPracticeID = (state) => {
-  return _.last(
-    state.get('routing')
-      .toJSON()
-      .locationBeforeTransitions
-      .pathname
-      .split('/')
-  );
-};
+const getDrills = (state, props) => {
+  const { id } = props.params;
 
-const getDrills = (state) => {
-  const practice_id = Number(getPracticeID(state));
   return state.get('drill_list').filter(
-    drill => drill.get('practice_id') === practice_id
+    drill => drill.get('practice_id') === id
   );
 };
 
-const getTotalTime = (state) => {
-  const practice_id = getPracticeID(state);
+const getTotalTime = (state, props) => {
+  const { id } = props.params;
+  const practice = state.get('practices').get(id);
 
-  return state.get('practices').get(practice_id).get('total_time');
+  if (!practice) { return; }
+
+  return practice.get('total_time');
 };
 
 export default createSelector(

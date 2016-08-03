@@ -30,7 +30,7 @@ const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState(state) { return state.get('routing').toJS(); }
 });
 
-store.subscribe(timerUpdater(store));
+// store.subscribe(timerUpdater(store));
 store.dispatch(fetchUserInfo());
 store.dispatch(fetchPractices());
 store.dispatch(fetchDrills());

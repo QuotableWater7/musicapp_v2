@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import DrillRow from './drill_row';
 import decorateDrills from '../selectors/drills';
 
-const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill, resetDrillWeights }) => {
+import { createDrill } from '../actions/drill';
+
+const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill, resetDrillWeights, practice_id }) => {
+
   return (
     <table className='table table-hover drills-table'>
       <thead className='thead-inverse no-select'>
@@ -25,7 +28,7 @@ const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill, resetDrillWei
       <tbody>
         <tr className='add-drill-row'>
           <td colSpan='4' className='text-xs-center no-select'>
-            <a href='#' onClick={addDrill}>Add Drill</a>
+            <a href='#' onClick={addDrill(practice_id)}>Add Drill</a>
           </td>
         </tr>
       </tbody>
@@ -33,15 +36,15 @@ const DrillsTable = ({ drills, addDrill, removeDrill, updateDrill, resetDrillWei
   );
 };
 
-const mapStateToProps = (state) => {
-  return { drills: decorateDrills(state).entrySeq() };
-};
+const mapStateToProps = () => { return {}; };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addDrill(event) {
-      event.preventDefault();
-      createDrill()
+    addDrill(practice_id) {
+      return (event) => {
+        event.preventDefault();
+        dispatch(createDrill(practice_id));
+      }
     },
 
     removeDrill(id) {
