@@ -1,19 +1,17 @@
 import _ from 'lodash';
 import { Map, List, fromJS } from 'immutable';
 
-import { FETCH_DRILLS_SUCCESS } from '../actions/drill';
+import {
+  FETCH_DRILLS_SUCCESS,
+  CREATE_DRILL_SUCCESS
+} from '../actions/drill';
 
 const default_weight = 50;
-let current_id = 0;
 
 export default (state = Map(), action) => {
   switch(action.type) {
-  case 'ADD_DRILL':
-    state = state.merge({
-      [current_id]: { title: '[edit]', weight: default_weight, id: current_id }
-    });
-    current_id++;
-    return state;
+  case CREATE_DRILL_SUCCESS:
+    return state.merge({ [action.payload.id]: action.payload });
   case 'REMOVE_DRILL':
     return state.delete(action.id);
   case 'UPDATE_DRILL':
