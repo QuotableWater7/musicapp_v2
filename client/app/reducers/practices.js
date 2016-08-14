@@ -8,12 +8,15 @@ import {
   FETCH_PRACTICES_SUCCESS,
   FETCH_PRACTICES_FAILURE,
   CREATE_PRACTICE_SUCCESS,
-  DELETE_PRACTICE_SUCCESS
+  DELETE_PRACTICE_SUCCESS,
+  UPDATE_PRACTICE
 } from '../actions/practice';
 
 const default_state = Map();
 
 export default (state = default_state, action) => {
+  let practice;
+
   switch (action.type) {
   case UPDATE_TOTAL_TIME:
     return state.merge({ total_time: action.total_time });
@@ -27,10 +30,13 @@ export default (state = default_state, action) => {
   case FETCH_PRACTICES_FAILURE:
     return default_state.merge({});
   case CREATE_PRACTICE_SUCCESS:
-    const practice = action.payload;
+    practice = action.payload;
     return state.merge({ [practice.id]: practice });
   case DELETE_PRACTICE_SUCCESS:
     return state.delete(action.id);
+  case UPDATE_PRACTICE:
+    practice = state.get(action.id.toString()).merge(action.data);
+    return state.merge({ [action.id]: practice });
   }
 
   return state;

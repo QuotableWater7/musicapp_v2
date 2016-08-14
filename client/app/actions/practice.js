@@ -17,6 +17,8 @@ export const DELETE_PRACTICE = 'DELETE_PRACTICE';
 export const DELETE_PRACTICE_SUCCESS = 'DELETE_PRACTICE_SUCCESS';
 export const DELETE_PRACTICE_FAILURE = 'DELETE_PRACTICE_FAILURE';
 
+export const UPDATE_PRACTICE = 'UPDATE_PRACTICE';
+
 export const deletePractice = (id) => {
   return (dispatch) => {
     dispatch({ type: DELETE_PRACTICE });
@@ -57,4 +59,8 @@ export const createPractice = (opts) => {
       }
     );
   };
+};
+
+export const updatePractice = (id, data) => {
+  return { type: UPDATE_PRACTICE, id, data };
 };
