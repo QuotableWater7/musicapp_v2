@@ -8,17 +8,16 @@ const PracticeList = ({ practices, createPractice, deletePractice }) => {
   return (
     <div>
       <div className='row'>
-        <div className='col-md-8 col-md-offset-4'>
+        <div className='col-md-12 text-xs-center'>
           <div className='btn btn-primary' onClick={createPractice}>
             New Practice
           </div>
         </div>
       </div>
       <div className='row margin-top-10'>
-        <div className='col-md-8 col-md-offset-4'>
-          <h5>Existing Practices</h5>
+        <table className='table table-striped'>
           {practices.entrySeq().map(renderPractice.bind(null, deletePractice))}
-        </div>
+        </table>
       </div>
     </div>
   );
@@ -26,10 +25,16 @@ const PracticeList = ({ practices, createPractice, deletePractice }) => {
 
 const renderPractice = (deletePractice, [id, practice]) => {
   return (
-    <div key={id}>
-      <Link to={`/app/practice/${id}`}>{practice.get('name')}</Link>
-      <i className='fa fa-remove' onClick={deletePractice(id)}/>
-    </div>
+    <tbody key={id}>
+      <tr>
+        <td>
+          <Link to={`/app/practice/${id}`}>{practice.get('name')}</Link>
+        </td>
+        <td>
+          <i className='fa fa-remove' onClick={deletePractice(id)}/>
+        </td>
+      </tr>
+    </tbody>
   );
 };
 

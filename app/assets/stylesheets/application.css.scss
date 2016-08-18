@@ -46,3 +46,12 @@
     z-index: 1;
   }
 }
+
+.btn-primary {
+  background: #553100;
+  border: 1px solid #332000;
+
+  &:hover {
+    background: #664211;
+  }
+}
