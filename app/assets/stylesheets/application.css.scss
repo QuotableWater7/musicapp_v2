@@ -8,6 +8,30 @@
 @import 'slider';
 @import 'pencil_input';
 
+$footer-height: 50px;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: $footer-height;
+}
+
+.footer, .footer-spacer {
+  height: $footer-height;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #666666;
+  color: white;
+  border-top: 2px solid #333333;
+}
+
 .margin-top-10 {
   margin-top: 10px;
 }
