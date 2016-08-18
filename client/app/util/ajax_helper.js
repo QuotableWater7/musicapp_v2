@@ -3,8 +3,20 @@ import metaTagsManager from './meta_tags_manager';
 
 export const post = (url, params) => {
   return request({
-    url: url,
+    url,
     method: 'POST',
+    responseType: 'json',
+    headers: {
+      'X-CSRF-Token': metaTagsManager.getCSRFToken(),
+    },
+    data: params
+  });
+};
+
+export const put = (url, params) => {
+  return request({
+    url,
+    method: 'PUT',
     responseType: 'json',
     headers: {
       'X-CSRF-Token': metaTagsManager.getCSRFToken(),

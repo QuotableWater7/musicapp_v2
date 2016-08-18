@@ -1,4 +1,4 @@
-import { get, post, destroy } from '../util/ajax_helper';
+import { get, post, destroy, put } from '../util/ajax_helper';
 
 // THESE PROBABLY DON'T BELONG HERE?
 export const UPDATE_TOTAL_TIME = 'UPDATE_TOTAL_TIME';
@@ -18,6 +18,10 @@ export const DELETE_PRACTICE_SUCCESS = 'DELETE_PRACTICE_SUCCESS';
 export const DELETE_PRACTICE_FAILURE = 'DELETE_PRACTICE_FAILURE';
 
 export const UPDATE_PRACTICE = 'UPDATE_PRACTICE';
+
+export const SAVE_PRACTICE = 'SAVE_PRACTICE';
+export const SAVE_PRACTICE_SUCCESS = 'SAVE_PRACTICE_SUCCESS';
+export const SAVE_PRACTICE_FAILURE = 'SAVE_PRACTICE_FAILURE';
 
 export const deletePractice = (id) => {
   return (dispatch) => {
@@ -63,4 +67,17 @@ export const createPractice = (opts) => {
 
 export const updatePractice = (id, data) => {
   return { type: UPDATE_PRACTICE, id, data };
+};
+
+export const savePractice = (id) => {
+  return (dispatch, getState) => {
+    const practice = getState().get('practices').get(id.toString());
+
+    dispatch({ type: 'SAVE_PRACTICE' });
+
+    put(`/practices/${id}.json`, { practice: practice.toJS() }).then(
+      (response) => { dispatch({ type: SAVE_PRACTICE_SUCCESS }); },
+      (error) => { dispatch({ type: SAVE_PRACTICE_FAILURE }); }
+    );
+  };
 };

@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import TotalTimeSelector from './total_time_selector';
 import DrillsTable from './drills_table';
 
-const Practice = ({ practice, children, updatePractice }) => {
+const Practice = ({ practice, children, updatePractice, savePractice }) => {
   if (!practice) { return null; }
 
   return (
@@ -14,7 +14,10 @@ const Practice = ({ practice, children, updatePractice }) => {
           <input
             value={practice.get('name')}
             name='name'
+            className='form-control'
+            style={{ width: 150, margin: 'auto' }}
             onChange={updatePractice(practice.get('id'))}
+            onBlur={savePractice.bind(null, practice.get('id'))}
           />
         </div>
       </div>
