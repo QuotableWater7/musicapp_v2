@@ -9,7 +9,7 @@ const Toolbar = ({ user, signOut }) => {
 
   return (
     <nav className='navbar navbar-light' style={{ background: '#e3f2fd' }}>
-      <div className='row toolbar-content'>
+      <div className='toolbar-content'>
         <div className='col-md-12'>
           <div className='navbar-brand'>
             <Link to='/app' activeClassName='active'>

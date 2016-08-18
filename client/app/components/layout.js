@@ -4,9 +4,11 @@ import Toolbar from './toolbar';
 
 const Layout = ({ children }) => {
   return (
-    <div className='container'>
+    <div>
       <Toolbar/>
+      <div className='container'>
       {children}
+      </div>
     </div>
   );
 };
