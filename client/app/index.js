@@ -6,7 +6,7 @@ import { Router, Route, browserHistory, IndexRoute, Redirect } from 'react-route
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 
-import Layout from './components/layout';
+import App from './containers/app';
 import Welcome from './components/welcome';
 import PracticeList from './components/practice_list';
 import Practice from './components/practice';
@@ -38,7 +38,7 @@ store.dispatch(fetchDrills());
 render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path='/app' component={Layout}>
+      <Route path='/app' component={App}>
         <IndexRoute component={Welcome}></IndexRoute>
         <Route path='/app/practices' component={PracticeList}></Route>
         <Route path='/app/practice/:id' component={PracticeContainer}></Route>
