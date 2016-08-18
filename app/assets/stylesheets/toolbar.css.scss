@@ -1,3 +1,12 @@
 .navbar {
   margin-bottom: 20px;
+  background: #D4A76A;
+
+  a {
+    color: #FFDBAA;
+
+    &:hover {
+      color: #FFECBB;
+    }
+  }
 }

@@ -8,7 +8,7 @@ const Toolbar = ({ user, signOut }) => {
   let user_data = user.get('user_data');
 
   return (
-    <nav className='navbar navbar-light' style={{ background: '#e3f2fd' }}>
+    <nav className='navbar navbar-light'>
       <div className='toolbar-content'>
         <div className='col-md-12'>
           <div className='navbar-brand'>
