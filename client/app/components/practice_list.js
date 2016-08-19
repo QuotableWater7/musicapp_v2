@@ -15,7 +15,7 @@ const PracticeList = ({ practices, createPractice, deletePractice }) => {
         </div>
       </div>
       <div className='row margin-top-10'>
-        <table className='table table-striped'>
+        <table className='table table-striped practice-table'>
           {practices.entrySeq().map(renderPractice.bind(null, deletePractice))}
         </table>
       </div>
